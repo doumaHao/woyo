@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="/Users/owen/.m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>
+    <context id="my" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:mysql://47.100.22.78:3306/woyo"
+                        userId="root"
+                        password="woyoP@ssword"/>
+
+        <javaModelGenerator targetPackage="cn.douma.woyo.entity"
+                            targetProject="D:/workspace/woyo/woyo-entity/src/main/java/dao">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="D:/workspace/woyo/woyo-entity/src/main/resource/mapper">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="cn.douma.woyo.dao"
+                             targetProject="D:/workspace/woyo/woyo-entity/src/main/java/dao" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--用户表-->
+        <table schema="woyo" tableName="user_info"><generatedKey column="id" sqlStatement="JDBC"/></table>
+
+    </context>
+</generatorConfiguration>
