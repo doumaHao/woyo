@@ -27,9 +27,17 @@ public class UserInfo {
 
     private String mail;
 
+    private Integer score;
+
     private String regType;
 
     private Date regTime;
+
+    private Date lastLoginTime;
+
+    private Integer loginTimes;
+
+    private String state;
 
     public Long getId() {
         return id;
@@ -127,6 +135,14 @@ public class UserInfo {
         this.mail = mail == null ? null : mail.trim();
     }
 
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
     public String getRegType() {
         return regType;
     }
@@ -141,5 +157,29 @@ public class UserInfo {
 
     public void setRegTime(Date regTime) {
         this.regTime = regTime;
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public Integer getLoginTimes() {
+        return loginTimes;
+    }
+
+    public void setLoginTimes(Integer loginTimes) {
+        this.loginTimes = loginTimes;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state == null ? null : state.trim();
     }
 }

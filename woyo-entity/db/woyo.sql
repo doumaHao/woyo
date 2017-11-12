@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2017/11/12 21:55:45                          */
+/* Created on:     2017/11/12 22:03:55                          */
 /*==============================================================*/
 
 
@@ -39,7 +39,7 @@ alter table car_info comment '司机表';
 /*==============================================================*/
 create table driver_sharing_info
 (
-   id                   bigint(20),
+   id                   bigint(20) not null auto_increment,
    user_id              bigint(20) comment '用户id',
    car_id               bigint(20),
    contract_type        varchar(2) comment '拼车方式 01-拼车 02-包车 03-都可以',
@@ -55,7 +55,8 @@ create table driver_sharing_info
    no_contract          char(1) comment '是否可包车 0-不可 1-可以',
    complete_flg         char(1) comment '是否完成 0-未完成 1-完成',
    delete_flg           char(1) comment '删除标志 0-未删除 1-删除',
-   remarks              varchar(200)
+   remarks              varchar(200),
+   primary key (id)
 );
 
 alter table driver_sharing_info comment '车找人表';
@@ -65,7 +66,7 @@ alter table driver_sharing_info comment '车找人表';
 /*==============================================================*/
 create table provincial_city
 (
-   id                   bigint(20) not null comment 'id',
+   id                   bigint(20) not null auto_increment comment 'id',
    type                 varchar(2) comment '省市区类型 01-省 02-市 03-区',
    name                 varchar(20) comment '省市区名称',
    parent_id            bigint(20) comment '父节点id',

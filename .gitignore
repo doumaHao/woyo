@@ -27,6 +27,7 @@ hs_err_pid*
 
 # IntelliJ project files
 application.yml
+generatorConfig.yml
 .idea
 *.iml
 out

@@ -14,8 +14,12 @@
     <result column="qq" property="qq" jdbcType="VARCHAR" />
     <result column="wechar" property="wechar" jdbcType="VARCHAR" />
     <result column="mail" property="mail" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="INTEGER" />
     <result column="reg_type" property="regType" jdbcType="VARCHAR" />
     <result column="reg_time" property="regTime" jdbcType="TIMESTAMP" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="login_times" property="loginTimes" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="CHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -77,7 +81,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, login, password, telphone, name, idno, sex, birthday, native_place, qq, wechar, 
-    mail, reg_type, reg_time
+    mail, score, reg_type, reg_time, last_login_time, login_times, state
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.douma.woyo.db.entity.UserInfoExample" >
     select
@@ -113,13 +117,15 @@
     insert into user_info (login, password, telphone, 
       name, idno, sex, birthday, 
       native_place, qq, wechar, 
-      mail, reg_type, reg_time
-      )
+      mail, score, reg_type, 
+      reg_time, last_login_time, login_times, 
+      state)
     values (#{login,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, 
       #{name,jdbcType=VARCHAR}, #{idno,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=INTEGER}, 
       #{nativePlace,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{wechar,jdbcType=VARCHAR}, 
-      #{mail,jdbcType=VARCHAR}, #{regType,jdbcType=VARCHAR}, #{regTime,jdbcType=TIMESTAMP}
-      )
+      #{mail,jdbcType=VARCHAR}, #{score,jdbcType=INTEGER}, #{regType,jdbcType=VARCHAR}, 
+      #{regTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{loginTimes,jdbcType=INTEGER}, 
+      #{state,jdbcType=CHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.douma.woyo.db.entity.UserInfo" useGeneratedKeys="true" keyProperty="id" >
     insert into user_info
@@ -157,11 +163,23 @@
       <if test="mail != null" >
         mail,
       </if>
+      <if test="score != null" >
+        score,
+      </if>
       <if test="regType != null" >
         reg_type,
       </if>
       <if test="regTime != null" >
         reg_time,
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time,
+      </if>
+      <if test="loginTimes != null" >
+        login_times,
+      </if>
+      <if test="state != null" >
+        state,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -198,11 +216,23 @@
       <if test="mail != null" >
         #{mail,jdbcType=VARCHAR},
       </if>
+      <if test="score != null" >
+        #{score,jdbcType=INTEGER},
+      </if>
       <if test="regType != null" >
         #{regType,jdbcType=VARCHAR},
       </if>
       <if test="regTime != null" >
         #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTimes != null" >
+        #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
       </if>
     </trim>
   </insert>
@@ -251,11 +281,23 @@
       <if test="record.mail != null" >
         mail = #{record.mail,jdbcType=VARCHAR},
       </if>
+      <if test="record.score != null" >
+        score = #{record.score,jdbcType=INTEGER},
+      </if>
       <if test="record.regType != null" >
         reg_type = #{record.regType,jdbcType=VARCHAR},
       </if>
       <if test="record.regTime != null" >
         reg_time = #{record.regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastLoginTime != null" >
+        last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.loginTimes != null" >
+        login_times = #{record.loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=CHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -276,8 +318,12 @@
       qq = #{record.qq,jdbcType=VARCHAR},
       wechar = #{record.wechar,jdbcType=VARCHAR},
       mail = #{record.mail,jdbcType=VARCHAR},
+      score = #{record.score,jdbcType=INTEGER},
       reg_type = #{record.regType,jdbcType=VARCHAR},
-      reg_time = #{record.regTime,jdbcType=TIMESTAMP}
+      reg_time = #{record.regTime,jdbcType=TIMESTAMP},
+      last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      login_times = #{record.loginTimes,jdbcType=INTEGER},
+      state = #{record.state,jdbcType=CHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -318,11 +364,23 @@
       <if test="mail != null" >
         mail = #{mail,jdbcType=VARCHAR},
       </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=INTEGER},
+      </if>
       <if test="regType != null" >
         reg_type = #{regType,jdbcType=VARCHAR},
       </if>
       <if test="regTime != null" >
         reg_time = #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTimes != null" >
+        login_times = #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=CHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -340,8 +398,12 @@
       qq = #{qq,jdbcType=VARCHAR},
       wechar = #{wechar,jdbcType=VARCHAR},
       mail = #{mail,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER},
       reg_type = #{regType,jdbcType=VARCHAR},
-      reg_time = #{regTime,jdbcType=TIMESTAMP}
+      reg_time = #{regTime,jdbcType=TIMESTAMP},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      login_times = #{loginTimes,jdbcType=INTEGER},
+      state = #{state,jdbcType=CHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

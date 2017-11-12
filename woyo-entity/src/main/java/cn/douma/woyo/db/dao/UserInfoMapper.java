@@ -3,8 +3,6 @@ package cn.douma.woyo.db.dao;
 import cn.douma.woyo.db.entity.UserInfo;
 import cn.douma.woyo.db.entity.UserInfoExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserInfoMapper {

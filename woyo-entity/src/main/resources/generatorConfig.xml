@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <classPathEntry
-            location="C:/Users/admin/.m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>
+            location="C:/Users/Administrator/.m2/repository/mysql/mysql-connector-java/5.1.42/mysql-connector-java-5.1.42.jar"/>
     <context id="my" targetRuntime="MyBatis3">
         <commentGenerator>
             <property name="suppressDate" value="false"/>
@@ -13,12 +13,12 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://47.100.22.78:3306/woyo"
-                        userId="root"
-                        password="woyoP@ssword"/>
+                        connectionURL="jdbc:mysql://11.1111.11.11:1111/1111"
+                        userId="1111"
+                        password="1111"/>
 
-        <javaModelGenerator targetPackage="entity"
-                            targetProject="D:/workspace/woyo/woyo-entity/src/main/java">
+        <javaModelGenerator targetPackage="cn.douma.woyo.db.entity"
+                            targetProject="D:/workspace/woyo/woyo-entity/src/main/java/cn/douma/woyo/db/dao">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -28,12 +28,23 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="dao"
-                             targetProject="D:/workspace/woyo/woyo-entity/src/main/java" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="cn.douma.woyo.db.dao"
+                             targetProject="D:/workspace/woyo/woyo-entity/src/main/java/cn/douma/woyo/db/dao" type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <!--用户表-->
+        <table schema="woyo" tableName="car_info">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="woyo" tableName="driver_sharing_info">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="woyo" tableName="provincial_city">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="woyo" tableName="user_address">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
         <table schema="woyo" tableName="user_info">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
