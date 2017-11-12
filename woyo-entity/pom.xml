@@ -12,7 +12,17 @@
     <artifactId>woyo-entity</artifactId>
 
     <dependencies>
-
+        <!--mysql依赖-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!--阿里数据池-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.19</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,4 +1,4 @@
-package entity;
+package cn.douma.woyo.db.entity;
 
 import java.util.Date;
 

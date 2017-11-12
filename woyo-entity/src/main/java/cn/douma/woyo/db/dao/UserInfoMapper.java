@@ -1,7 +1,7 @@
-package dao;
+package cn.douma.woyo.db.dao;
 
-import entity.UserInfo;
-import entity.UserInfoExample;
+import cn.douma.woyo.db.entity.UserInfo;
+import cn.douma.woyo.db.entity.UserInfoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
