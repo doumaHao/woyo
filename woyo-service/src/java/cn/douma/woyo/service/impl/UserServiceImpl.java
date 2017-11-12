@@ -5,9 +5,12 @@ import cn.douma.woyo.db.entity.UserInfo;
 import cn.douma.woyo.db.entity.UserInfoExample;
 import cn.douma.woyo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@SuppressWarnings("ALL")
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
