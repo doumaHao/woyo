@@ -1,5 +1,7 @@
 package cn.douma.woyo.service;
 
+import cn.douma.woyo.db.entity.UserInfo;
+
 /**
  * Copyright (c) 2017. douma.cn, All Rights Reserved
  * Description:
@@ -7,5 +9,13 @@ package cn.douma.woyo.service;
  * Date: 2017-11-13
  * Time: 20:48
  */
-public class UserService {
+public interface UserService {
+
+    /**
+     * 用户注册
+     *
+     * @param userInfo
+     * @return
+     */
+    UserInfo UserRegister(UserInfo userInfo);
 }

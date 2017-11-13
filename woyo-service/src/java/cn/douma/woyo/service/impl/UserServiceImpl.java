@@ -1,6 +1,9 @@
 package cn.douma.woyo.service.impl;
 
+import cn.douma.woyo.db.entity.UserInfo;
 import cn.douma.woyo.service.UserService;
+
+import java.util.Date;
 
 /**
  * Copyright (c) 2017. douma.cn, All Rights Reserved
@@ -9,5 +12,12 @@ import cn.douma.woyo.service.UserService;
  * Date: 2017-11-13
  * Time: 20:49
  */
-public class UserServiceImpl extends UserService {
+public class UserServiceImpl implements UserService {
+
+    @Override
+    public UserInfo UserRegister(UserInfo userInfo) {
+//        userInfo.setRegTime(DateUti.get);
+        return null;
+    }
+
 }
