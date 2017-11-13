@@ -1,25 +1,13 @@
 package cn.douma.woyo.service.impl;
 
-import cn.douma.woyo.db.dao.UserInfoMapper;
-import cn.douma.woyo.db.entity.UserInfo;
-import cn.douma.woyo.db.entity.UserInfoExample;
 import cn.douma.woyo.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
-
-
-@SuppressWarnings("ALL")
-@Service
-public class UserServiceImpl implements UserService {
-
-    @Autowired
-    private UserInfoMapper userInfoMapper;
-
-    @Override
-    public List<UserInfo> list() {
-        UserInfoExample userInfoExample = new UserInfoExample();
-        return userInfoMapper.selectByExample(userInfoExample);
-    }
+/**
+ * Copyright (c) 2017. douma.cn, All Rights Reserved
+ * Description:
+ * User: douma haoxijun
+ * Date: 2017-11-13
+ * Time: 20:49
+ */
+public class UserServiceImpl extends UserService {
 }
