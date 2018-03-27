@@ -17,5 +17,5 @@ public interface UserService {
      * @param userInfo
      * @return
      */
-    UserInfo UserRegister(UserInfo userInfo);
+    UserInfo userRegister(UserInfo userInfo);
 }

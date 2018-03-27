@@ -3,15 +3,12 @@
 <mapper namespace="cn.douma.woyo.db.dao.CarInfoMapper" >
   <resultMap id="BaseResultMap" type="cn.douma.woyo.db.entity.CarInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="user_id" property="userId" jdbcType="BIGINT" />
-    <result column="car_no" property="carNo" jdbcType="VARCHAR" />
-    <result column="car_no_img" property="carNoImg" jdbcType="VARCHAR" />
     <result column="car_type" property="carType" jdbcType="VARCHAR" />
-    <result column="engine_no" property="engineNo" jdbcType="VARCHAR" />
-    <result column="brand_id" property="brandId" jdbcType="BIGINT" />
-    <result column="model_id" property="modelId" jdbcType="BIGINT" />
-    <result column="car_color" property="carColor" jdbcType="VARCHAR" />
-    <result column="car_img" property="carImg" jdbcType="VARCHAR" />
+    <result column="car_no" property="carNo" jdbcType="VARCHAR" />
+    <result column="car_vin" property="carVin" jdbcType="VARCHAR" />
+    <result column="car_age" property="carAge" jdbcType="INTEGER" />
+    <result column="person_num" property="personNum" jdbcType="INTEGER" />
+    <result column="cargo_num" property="cargoNum" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,8 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, car_no, car_no_img, car_type, engine_no, brand_id, model_id, car_color, 
-    car_img
+    id, car_type, car_no, car_vin, car_age, person_num, cargo_num
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.douma.woyo.db.entity.CarInfoExample" >
     select
@@ -106,73 +102,53 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.douma.woyo.db.entity.CarInfo" useGeneratedKeys="true" keyProperty="id" >
-    insert into car_info (user_id, car_no, car_no_img, 
-      car_type, engine_no, brand_id, 
-      model_id, car_color, car_img
+    insert into car_info (car_type, car_no, car_vin, 
+      car_age, person_num, cargo_num
       )
-    values (#{userId,jdbcType=BIGINT}, #{carNo,jdbcType=VARCHAR}, #{carNoImg,jdbcType=VARCHAR}, 
-      #{carType,jdbcType=VARCHAR}, #{engineNo,jdbcType=VARCHAR}, #{brandId,jdbcType=BIGINT}, 
-      #{modelId,jdbcType=BIGINT}, #{carColor,jdbcType=VARCHAR}, #{carImg,jdbcType=VARCHAR}
+    values (#{carType,jdbcType=VARCHAR}, #{carNo,jdbcType=VARCHAR}, #{carVin,jdbcType=VARCHAR}, 
+      #{carAge,jdbcType=INTEGER}, #{personNum,jdbcType=INTEGER}, #{cargoNum,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.douma.woyo.db.entity.CarInfo" useGeneratedKeys="true" keyProperty="id" >
     insert into car_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        user_id,
+      <if test="carType != null" >
+        car_type,
       </if>
       <if test="carNo != null" >
         car_no,
       </if>
-      <if test="carNoImg != null" >
-        car_no_img,
+      <if test="carVin != null" >
+        car_vin,
       </if>
-      <if test="carType != null" >
-        car_type,
+      <if test="carAge != null" >
+        car_age,
       </if>
-      <if test="engineNo != null" >
-        engine_no,
+      <if test="personNum != null" >
+        person_num,
       </if>
-      <if test="brandId != null" >
-        brand_id,
-      </if>
-      <if test="modelId != null" >
-        model_id,
-      </if>
-      <if test="carColor != null" >
-        car_color,
-      </if>
-      <if test="carImg != null" >
-        car_img,
+      <if test="cargoNum != null" >
+        cargo_num,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        #{userId,jdbcType=BIGINT},
+      <if test="carType != null" >
+        #{carType,jdbcType=VARCHAR},
       </if>
       <if test="carNo != null" >
         #{carNo,jdbcType=VARCHAR},
       </if>
-      <if test="carNoImg != null" >
-        #{carNoImg,jdbcType=VARCHAR},
+      <if test="carVin != null" >
+        #{carVin,jdbcType=VARCHAR},
       </if>
-      <if test="carType != null" >
-        #{carType,jdbcType=VARCHAR},
+      <if test="carAge != null" >
+        #{carAge,jdbcType=INTEGER},
       </if>
-      <if test="engineNo != null" >
-        #{engineNo,jdbcType=VARCHAR},
+      <if test="personNum != null" >
+        #{personNum,jdbcType=INTEGER},
       </if>
-      <if test="brandId != null" >
-        #{brandId,jdbcType=BIGINT},
-      </if>
-      <if test="modelId != null" >
-        #{modelId,jdbcType=BIGINT},
-      </if>
-      <if test="carColor != null" >
-        #{carColor,jdbcType=VARCHAR},
-      </if>
-      <if test="carImg != null" >
-        #{carImg,jdbcType=VARCHAR},
+      <if test="cargoNum != null" >
+        #{cargoNum,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -188,32 +164,23 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=BIGINT},
+      <if test="record.carType != null" >
+        car_type = #{record.carType,jdbcType=VARCHAR},
       </if>
       <if test="record.carNo != null" >
         car_no = #{record.carNo,jdbcType=VARCHAR},
       </if>
-      <if test="record.carNoImg != null" >
-        car_no_img = #{record.carNoImg,jdbcType=VARCHAR},
+      <if test="record.carVin != null" >
+        car_vin = #{record.carVin,jdbcType=VARCHAR},
       </if>
-      <if test="record.carType != null" >
-        car_type = #{record.carType,jdbcType=VARCHAR},
+      <if test="record.carAge != null" >
+        car_age = #{record.carAge,jdbcType=INTEGER},
       </if>
-      <if test="record.engineNo != null" >
-        engine_no = #{record.engineNo,jdbcType=VARCHAR},
+      <if test="record.personNum != null" >
+        person_num = #{record.personNum,jdbcType=INTEGER},
       </if>
-      <if test="record.brandId != null" >
-        brand_id = #{record.brandId,jdbcType=BIGINT},
-      </if>
-      <if test="record.modelId != null" >
-        model_id = #{record.modelId,jdbcType=BIGINT},
-      </if>
-      <if test="record.carColor != null" >
-        car_color = #{record.carColor,jdbcType=VARCHAR},
-      </if>
-      <if test="record.carImg != null" >
-        car_img = #{record.carImg,jdbcType=VARCHAR},
+      <if test="record.cargoNum != null" >
+        cargo_num = #{record.cargoNum,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -223,15 +190,12 @@
   <update id="updateByExample" parameterType="map" >
     update car_info
     set id = #{record.id,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=BIGINT},
-      car_no = #{record.carNo,jdbcType=VARCHAR},
-      car_no_img = #{record.carNoImg,jdbcType=VARCHAR},
       car_type = #{record.carType,jdbcType=VARCHAR},
-      engine_no = #{record.engineNo,jdbcType=VARCHAR},
-      brand_id = #{record.brandId,jdbcType=BIGINT},
-      model_id = #{record.modelId,jdbcType=BIGINT},
-      car_color = #{record.carColor,jdbcType=VARCHAR},
-      car_img = #{record.carImg,jdbcType=VARCHAR}
+      car_no = #{record.carNo,jdbcType=VARCHAR},
+      car_vin = #{record.carVin,jdbcType=VARCHAR},
+      car_age = #{record.carAge,jdbcType=INTEGER},
+      person_num = #{record.personNum,jdbcType=INTEGER},
+      cargo_num = #{record.cargoNum,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -239,47 +203,35 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.douma.woyo.db.entity.CarInfo" >
     update car_info
     <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=BIGINT},
+      <if test="carType != null" >
+        car_type = #{carType,jdbcType=VARCHAR},
       </if>
       <if test="carNo != null" >
         car_no = #{carNo,jdbcType=VARCHAR},
       </if>
-      <if test="carNoImg != null" >
-        car_no_img = #{carNoImg,jdbcType=VARCHAR},
+      <if test="carVin != null" >
+        car_vin = #{carVin,jdbcType=VARCHAR},
       </if>
-      <if test="carType != null" >
-        car_type = #{carType,jdbcType=VARCHAR},
+      <if test="carAge != null" >
+        car_age = #{carAge,jdbcType=INTEGER},
       </if>
-      <if test="engineNo != null" >
-        engine_no = #{engineNo,jdbcType=VARCHAR},
+      <if test="personNum != null" >
+        person_num = #{personNum,jdbcType=INTEGER},
       </if>
-      <if test="brandId != null" >
-        brand_id = #{brandId,jdbcType=BIGINT},
-      </if>
-      <if test="modelId != null" >
-        model_id = #{modelId,jdbcType=BIGINT},
-      </if>
-      <if test="carColor != null" >
-        car_color = #{carColor,jdbcType=VARCHAR},
-      </if>
-      <if test="carImg != null" >
-        car_img = #{carImg,jdbcType=VARCHAR},
+      <if test="cargoNum != null" >
+        cargo_num = #{cargoNum,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.douma.woyo.db.entity.CarInfo" >
     update car_info
-    set user_id = #{userId,jdbcType=BIGINT},
+    set car_type = #{carType,jdbcType=VARCHAR},
       car_no = #{carNo,jdbcType=VARCHAR},
-      car_no_img = #{carNoImg,jdbcType=VARCHAR},
-      car_type = #{carType,jdbcType=VARCHAR},
-      engine_no = #{engineNo,jdbcType=VARCHAR},
-      brand_id = #{brandId,jdbcType=BIGINT},
-      model_id = #{modelId,jdbcType=BIGINT},
-      car_color = #{carColor,jdbcType=VARCHAR},
-      car_img = #{carImg,jdbcType=VARCHAR}
+      car_vin = #{carVin,jdbcType=VARCHAR},
+      car_age = #{carAge,jdbcType=INTEGER},
+      person_num = #{personNum,jdbcType=INTEGER},
+      cargo_num = #{cargoNum,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

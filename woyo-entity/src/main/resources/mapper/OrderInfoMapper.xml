@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.douma.woyo.db.dao.UserInfoMapper" >
-  <resultMap id="BaseResultMap" type="cn.douma.woyo.db.entity.UserInfo" >
+<mapper namespace="cn.douma.woyo.db.dao.OrderInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.douma.woyo.db.entity.OrderInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="user_type" property="userType" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="idno" property="idno" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="order_status" property="orderStatus" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="VARCHAR" />
+    <result column="start_address" property="startAddress" jdbcType="VARCHAR" />
+    <result column="end_address" property="endAddress" jdbcType="VARCHAR" />
     <result column="credit_time" property="creditTime" jdbcType="TIMESTAMP" />
-    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,15 +70,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_type, name, idno, phone, address, credit_time, last_login_time
+    id, order_no, order_time, order_status, order_type, start_address, end_address, credit_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.douma.woyo.db.entity.UserInfoExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.douma.woyo.db.entity.OrderInfoExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from user_info
+    from order_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -89,108 +89,108 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from user_info
+    from order_info
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from user_info
+    delete from order_info
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="cn.douma.woyo.db.entity.UserInfoExample" >
-    delete from user_info
+  <delete id="deleteByExample" parameterType="cn.douma.woyo.db.entity.OrderInfoExample" >
+    delete from order_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.douma.woyo.db.entity.UserInfo" useGeneratedKeys="true" keyProperty="id" >
-    insert into user_info (user_type, name, idno, 
-      phone, address, credit_time, 
-      last_login_time)
-    values (#{userType,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{idno,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{creditTime,jdbcType=TIMESTAMP}, 
-      #{lastLoginTime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="cn.douma.woyo.db.entity.OrderInfo" useGeneratedKeys="true" keyProperty="id" >
+    insert into order_info (order_no, order_time, order_status, 
+      order_type, start_address, end_address, 
+      credit_time)
+    values (#{orderNo,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, #{orderStatus,jdbcType=VARCHAR}, 
+      #{orderType,jdbcType=VARCHAR}, #{startAddress,jdbcType=VARCHAR}, #{endAddress,jdbcType=VARCHAR}, 
+      #{creditTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="cn.douma.woyo.db.entity.UserInfo" useGeneratedKeys="true" keyProperty="id" >
-    insert into user_info
+  <insert id="insertSelective" parameterType="cn.douma.woyo.db.entity.OrderInfo" useGeneratedKeys="true" keyProperty="id" >
+    insert into order_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userType != null" >
-        user_type,
+      <if test="orderNo != null" >
+        order_no,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="orderTime != null" >
+        order_time,
       </if>
-      <if test="idno != null" >
-        idno,
+      <if test="orderStatus != null" >
+        order_status,
       </if>
-      <if test="phone != null" >
-        phone,
+      <if test="orderType != null" >
+        order_type,
       </if>
-      <if test="address != null" >
-        address,
+      <if test="startAddress != null" >
+        start_address,
+      </if>
+      <if test="endAddress != null" >
+        end_address,
       </if>
       <if test="creditTime != null" >
         credit_time,
       </if>
-      <if test="lastLoginTime != null" >
-        last_login_time,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userType != null" >
-        #{userType,jdbcType=VARCHAR},
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="orderTime != null" >
+        #{orderTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="idno != null" >
-        #{idno,jdbcType=VARCHAR},
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
-        #{phone,jdbcType=VARCHAR},
+      <if test="orderType != null" >
+        #{orderType,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
+      <if test="startAddress != null" >
+        #{startAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="endAddress != null" >
+        #{endAddress,jdbcType=VARCHAR},
       </if>
       <if test="creditTime != null" >
         #{creditTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="lastLoginTime != null" >
-        #{lastLoginTime,jdbcType=TIMESTAMP},
-      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="cn.douma.woyo.db.entity.UserInfoExample" resultType="java.lang.Integer" >
-    select count(*) from user_info
+  <select id="countByExample" parameterType="cn.douma.woyo.db.entity.OrderInfoExample" resultType="java.lang.Integer" >
+    select count(*) from order_info
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update user_info
+    update order_info
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.userType != null" >
-        user_type = #{record.userType,jdbcType=VARCHAR},
+      <if test="record.orderNo != null" >
+        order_no = #{record.orderNo,jdbcType=VARCHAR},
       </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.orderTime != null" >
+        order_time = #{record.orderTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.idno != null" >
-        idno = #{record.idno,jdbcType=VARCHAR},
+      <if test="record.orderStatus != null" >
+        order_status = #{record.orderStatus,jdbcType=VARCHAR},
       </if>
-      <if test="record.phone != null" >
-        phone = #{record.phone,jdbcType=VARCHAR},
+      <if test="record.orderType != null" >
+        order_type = #{record.orderType,jdbcType=VARCHAR},
       </if>
-      <if test="record.address != null" >
-        address = #{record.address,jdbcType=VARCHAR},
+      <if test="record.startAddress != null" >
+        start_address = #{record.startAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endAddress != null" >
+        end_address = #{record.endAddress,jdbcType=VARCHAR},
       </if>
       <if test="record.creditTime != null" >
         credit_time = #{record.creditTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.lastLoginTime != null" >
-        last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -198,55 +198,55 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update user_info
+    update order_info
     set id = #{record.id,jdbcType=BIGINT},
-      user_type = #{record.userType,jdbcType=VARCHAR},
-      name = #{record.name,jdbcType=VARCHAR},
-      idno = #{record.idno,jdbcType=VARCHAR},
-      phone = #{record.phone,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
-      credit_time = #{record.creditTime,jdbcType=TIMESTAMP},
-      last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP}
+      order_no = #{record.orderNo,jdbcType=VARCHAR},
+      order_time = #{record.orderTime,jdbcType=TIMESTAMP},
+      order_status = #{record.orderStatus,jdbcType=VARCHAR},
+      order_type = #{record.orderType,jdbcType=VARCHAR},
+      start_address = #{record.startAddress,jdbcType=VARCHAR},
+      end_address = #{record.endAddress,jdbcType=VARCHAR},
+      credit_time = #{record.creditTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.douma.woyo.db.entity.UserInfo" >
-    update user_info
+  <update id="updateByPrimaryKeySelective" parameterType="cn.douma.woyo.db.entity.OrderInfo" >
+    update order_info
     <set >
-      <if test="userType != null" >
-        user_type = #{userType,jdbcType=VARCHAR},
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="orderTime != null" >
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="idno != null" >
-        idno = #{idno,jdbcType=VARCHAR},
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
-        phone = #{phone,jdbcType=VARCHAR},
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
+      <if test="startAddress != null" >
+        start_address = #{startAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="endAddress != null" >
+        end_address = #{endAddress,jdbcType=VARCHAR},
       </if>
       <if test="creditTime != null" >
         credit_time = #{creditTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="lastLoginTime != null" >
-        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
-      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.douma.woyo.db.entity.UserInfo" >
-    update user_info
-    set user_type = #{userType,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
-      idno = #{idno,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      credit_time = #{creditTime,jdbcType=TIMESTAMP},
-      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
+  <update id="updateByPrimaryKey" parameterType="cn.douma.woyo.db.entity.OrderInfo" >
+    update order_info
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      order_status = #{orderStatus,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=VARCHAR},
+      start_address = #{startAddress,jdbcType=VARCHAR},
+      end_address = #{endAddress,jdbcType=VARCHAR},
+      credit_time = #{creditTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

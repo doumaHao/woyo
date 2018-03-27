@@ -3,23 +3,17 @@ package cn.douma.woyo.db.entity;
 public class CarInfo {
     private Long id;
 
-    private Long userId;
+    private String carType;
 
     private String carNo;
 
-    private String carNoImg;
+    private String carVin;
 
-    private String carType;
+    private Integer carAge;
 
-    private String engineNo;
+    private Integer personNum;
 
-    private Long brandId;
-
-    private Long modelId;
-
-    private String carColor;
-
-    private String carImg;
+    private Integer cargoNum;
 
     public Long getId() {
         return id;
@@ -27,30 +21,6 @@ public class CarInfo {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getCarNo() {
-        return carNo;
-    }
-
-    public void setCarNo(String carNo) {
-        this.carNo = carNo == null ? null : carNo.trim();
-    }
-
-    public String getCarNoImg() {
-        return carNoImg;
-    }
-
-    public void setCarNoImg(String carNoImg) {
-        this.carNoImg = carNoImg == null ? null : carNoImg.trim();
     }
 
     public String getCarType() {
@@ -61,43 +31,43 @@ public class CarInfo {
         this.carType = carType == null ? null : carType.trim();
     }
 
-    public String getEngineNo() {
-        return engineNo;
+    public String getCarNo() {
+        return carNo;
     }
 
-    public void setEngineNo(String engineNo) {
-        this.engineNo = engineNo == null ? null : engineNo.trim();
+    public void setCarNo(String carNo) {
+        this.carNo = carNo == null ? null : carNo.trim();
     }
 
-    public Long getBrandId() {
-        return brandId;
+    public String getCarVin() {
+        return carVin;
     }
 
-    public void setBrandId(Long brandId) {
-        this.brandId = brandId;
+    public void setCarVin(String carVin) {
+        this.carVin = carVin == null ? null : carVin.trim();
     }
 
-    public Long getModelId() {
-        return modelId;
+    public Integer getCarAge() {
+        return carAge;
     }
 
-    public void setModelId(Long modelId) {
-        this.modelId = modelId;
+    public void setCarAge(Integer carAge) {
+        this.carAge = carAge;
     }
 
-    public String getCarColor() {
-        return carColor;
+    public Integer getPersonNum() {
+        return personNum;
     }
 
-    public void setCarColor(String carColor) {
-        this.carColor = carColor == null ? null : carColor.trim();
+    public void setPersonNum(Integer personNum) {
+        this.personNum = personNum;
     }
 
-    public String getCarImg() {
-        return carImg;
+    public Integer getCargoNum() {
+        return cargoNum;
     }
 
-    public void setCarImg(String carImg) {
-        this.carImg = carImg == null ? null : carImg.trim();
+    public void setCargoNum(Integer cargoNum) {
+        this.cargoNum = cargoNum;
     }
 }
