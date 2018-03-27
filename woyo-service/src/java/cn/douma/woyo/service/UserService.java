@@ -12,10 +12,43 @@ import cn.douma.woyo.db.entity.UserInfo;
 public interface UserService {
 
     /**
-     * 用户注册
+     * 微信公众号注册用户
      *
      * @param userInfo
      * @return
      */
-    UserInfo userRegister(UserInfo userInfo);
+    UserInfo registerByWeixin(UserInfo userInfo);
+
+    /**
+     * PC注册用户
+     *
+     * @param userInfo
+     * @return
+     */
+    UserInfo registerByPc(UserInfo userInfo);
+
+    /**
+     * APP注册用户
+     *
+     * @param userInfo
+     * @return
+     */
+    UserInfo registerByApp(UserInfo userInfo);
+
+    /**
+     * 根据用户名密码登录
+     *
+     * @param username
+     * @param password
+     * @return
+     */
+    UserInfo loginByPassword(String login, String password);
+
+    /**
+     * 用户注销登录
+     *
+     * @param username
+     * @return
+     */
+    boolean userLogout(String username);
 }

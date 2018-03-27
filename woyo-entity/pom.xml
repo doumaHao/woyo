@@ -44,10 +44,10 @@
         </dependency>
     </dependencies>
 
-    <!--<build>
+    <build>
         <plugins>
-            &lt;!&ndash;mybatis generator插件&ndash;&gt;
-            <plugin>
+            <!--mybatis generator插件-->
+            <!--<plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.2</version>
@@ -71,9 +71,10 @@
                         <version>1.3.2</version>
                     </dependency>
                 </dependencies>
-            </plugin>
+            </plugin>-->
+
         </plugins>
-    </build>-->
+    </build>
 
 
 </project>

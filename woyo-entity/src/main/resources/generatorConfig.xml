@@ -37,10 +37,13 @@
         <table schema="woyo" tableName="car_info">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
-        <table schema="woyo" tableName="order_info">
+        <table schema="woyo" tableName="driver_sharing_info">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
-        <table schema="woyo" tableName="requirement_info">
+        <table schema="woyo" tableName="provincial_city">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="woyo" tableName="user_address">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
         <table schema="woyo" tableName="user_info">

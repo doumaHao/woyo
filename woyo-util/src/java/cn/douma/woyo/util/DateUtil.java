@@ -14,7 +14,11 @@ import java.util.regex.Pattern;
  */
 public class DateUtil {
 
-    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    final public static SimpleDateFormat sdf_yyyMM = new SimpleDateFormat("yyyy-MM");
+    final public static SimpleDateFormat sdf_yyyMMdd = new SimpleDateFormat("yyyy-MM-dd");
+    final public static SimpleDateFormat sdf_yyyMMddHHmmss = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    final public static SimpleDateFormat sdf_yyyMMddHHmmss2 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    final public static SimpleDateFormat sdf_yyyyMMddHHmmssSSS = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 
     /**
      * 验证日期格式的正则表达式
@@ -25,11 +29,12 @@ public class DateUtil {
             + "|(02-(0[1-9]|[1][0-9]|2[0-8])))";
 
     /**
-     * 获取系统时间
+     * 获取系统当前时间
+     *
      * @return
      */
-    public static Date getNow(){
-        return new Date();
+    public static Date getSysNow() {
+        return new Date(System.currentTimeMillis());
     }
 
     /**
@@ -70,12 +75,12 @@ public class DateUtil {
 
 
     /**
-     * 获取指定月的第一天日期
+     * 获取月第一天日期
      *
      * @param floatMonths 以当前月为基数，0为当前月；1为下一个月；-1为上一个月；以此类推。
      * @return
      */
-    public static Date getFirstDayOfCurrentMonth(int floatMonths) {
+    public static Date getFirstDayOfMonth(int floatMonths) {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MONTH, floatMonths);
         calendar.set(Calendar.DAY_OF_MONTH, 1); //设置为1号,即本月第一天
@@ -83,12 +88,12 @@ public class DateUtil {
     }
 
     /**
-     * 获取指定月的最后一天日期
+     * 获取月最后一天日期
      *
      * @param floatMonths 以当前月为基数，0为当前月；1为下一个月；-1为上一个月；以此类推。
      * @return
      */
-    public static Date getLastDayOfCurrentMonth(int floatMonths) {
+    public static Date getLastDayOfMonth(int floatMonths) {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MONTH, floatMonths);
         calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
@@ -96,47 +101,37 @@ public class DateUtil {
     }
 
     /**
-     * 获得指定日期的前一天（如specifiedDay为2015-07-01，则返回值为2015-06-30）
+     * 获得日期的对应其他日期（前后N年，前后N月，前后N日）
      *
-     * @param specifiedDay
+     * @param date  标准日期
+     * @param year  前后N年 0表示本年
+     * @param month 前后N月 0表示本月
+     * @param day   前后N日0表示本日
      * @return
-     * @throws Exception
      */
-    public static String getSpecifiedDayBefore(String specifiedDay) {
+    public static Date getSpecifiedDay(Date date, int year, int month, int day) {
         Calendar calendar = Calendar.getInstance();
-        Date date = null;
-        try {
-            date = new SimpleDateFormat("yy-MM-dd").parse(specifiedDay);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
         calendar.setTime(date);
-        int day = calendar.get(Calendar.DATE);
-        calendar.set(Calendar.DATE, day - 1);
-        String dayBefore = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime());
-        return dayBefore;
+        int thisYear = calendar.get(Calendar.YEAR);
+        int thisMonth = calendar.get(Calendar.MONTH);
+        int thisDay = calendar.get(Calendar.DATE);
+        calendar.set(Calendar.YEAR, thisYear + year);
+        calendar.set(Calendar.MONTH, thisMonth + month);
+        calendar.set(Calendar.DATE, thisDay + day);
+        return calendar.getTime();
     }
 
     /**
-     * 获得指定日期的后一天（如specifiedDay为2015-06-30，则返回值为2015-07-01）
+     * 获得今天的对应其他日期（前后N年，前后N月，前后N日）
      *
-     * @param specifiedDay
+     * @param year  前后N年 0表示本年
+     * @param month 前后N月 0表示本月
+     * @param day   前后N日0表示本日
      * @return
-     * @throws Exception
      */
-    public static String getSpecifiedDayAfter(String specifiedDay) {
-        Calendar calendar = Calendar.getInstance();
-        Date date = null;
-        try {
-            date = new SimpleDateFormat("yy-MM-dd").parse(specifiedDay);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        calendar.setTime(date);
-        int day = calendar.get(Calendar.DATE);
-        calendar.set(Calendar.DATE, day + 1);
-        String dayAfter = new SimpleDateFormat("yyyy-MM-dd").format(calendar.getTime());
-        return dayAfter;
+    public static Date getSpecifiedDay(int year, int month, int day) {
+        Date date = new Date();
+        return getSpecifiedDay(date, year, month, day);
     }
 
     /**
@@ -146,7 +141,22 @@ public class DateUtil {
      * @return
      */
     public static String dateToString(Date date) {
-        return format.format(date);
+        if (date == null) {
+            return null;
+        }
+        return sdf_yyyMMdd.format(date);
+    }
+
+    /**
+     * @param date
+     * @param sdf
+     * @return
+     */
+    public static String dateToString(Date date, SimpleDateFormat sdf) {
+        if (date == null) {
+            return null;
+        }
+        return sdf.format(date);
     }
 
     /**
@@ -158,11 +168,42 @@ public class DateUtil {
     public static Date stringToDate(String string) {
         Date date = null;
         try {
-            date = format.parse(string);
+            date = sdf_yyyMMdd.parse(string);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return date;
+    }
+
+    /**
+     * 整型转换成日期
+     *
+     * @param year
+     * @param month
+     * @return
+     */
+    public static Date intToDate(int year, int month) throws ParseException {
+        Calendar calendar = Calendar.getInstance();
+        String thisTimeStr = String.valueOf(year);
+        if (month >= 10) {
+            thisTimeStr = thisTimeStr + "-" + month;
+        } else {
+            thisTimeStr = thisTimeStr + "-0" + month;
+        }
+        calendar.setTime(sdf_yyyMM.parse(thisTimeStr));
+        return calendar.getTime();
+    }
+
+    /**
+     * 整形转换成日期字符串
+     *
+     * @param year
+     * @param month
+     * @return
+     * @throws ParseException
+     */
+    public static String intToDateString(int year, int month) throws ParseException {
+        return dateToString(intToDate(year, month));
     }
 
     /**
@@ -315,4 +356,28 @@ public class DateUtil {
             return null;
         }
     }
+
+    /**
+     * 传入的年和月是否在指定日期的N个月内
+     *
+     * @param inMonth
+     * @param date
+     * @param year
+     * @param month
+     * @return
+     */
+    public static boolean inThisTime(int inMonth, Date date, int year, int month) throws ParseException {
+        Calendar aft = Calendar.getInstance();
+        Calendar bef = Calendar.getInstance();
+        bef.setTime(intToDate(year, month));
+        aft.setTime(date);
+        int r = aft.get(Calendar.MONTH) - bef.get(Calendar.MONTH);
+        int m = (aft.get(Calendar.YEAR) - bef.get(Calendar.YEAR)) * 12;
+        if (inMonth > Math.abs(m + r)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
