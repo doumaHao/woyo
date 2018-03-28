@@ -1,17 +1,18 @@
-package cn.douma.woyo.service.constant;
+package cn.douma.woyo.constant;
 
 /**
- * 性别类型
+ * 用户注册方式
  */
-public enum SexEnum implements BaseEnum<String, SexEnum, String> {
+public enum UserRegTypeEnum implements BaseEnum<String, UserRegTypeEnum, String> {
 
-    MAN("1", "男"),
-    WOMAN("2", "女");
+    TYPE_01("01", "微信公众号"),
+    TYPE_02("02", "PC网页"),
+    TYPE_03("03", "APP");
 
     private String code;
     private String name;
 
-    private SexEnum(String code, String name) {
+    private UserRegTypeEnum(String code, String name) {
         this.code = code;
         this.name = name;
     }
@@ -31,10 +32,10 @@ public enum SexEnum implements BaseEnum<String, SexEnum, String> {
         return this.code + "";
     }
 
-    public static SexEnum getEnumByName(String name) {
+    public static UserRegTypeEnum getEnumByName(String name) {
         if (name == null)
             return null;
-        for (SexEnum statusType : SexEnum.values()) {
+        for (UserRegTypeEnum statusType : UserRegTypeEnum.values()) {
             if (statusType.getName().equals(name)) {
                 return statusType;
             }
@@ -42,10 +43,10 @@ public enum SexEnum implements BaseEnum<String, SexEnum, String> {
         return null;
     }
 
-    public static SexEnum getEnumByCode(String code) {
+    public static UserRegTypeEnum getEnumByCode(String code) {
         if (code == null)
             return null;
-        for (SexEnum statusType : SexEnum.values()) {
+        for (UserRegTypeEnum statusType : UserRegTypeEnum.values()) {
             if (statusType.getCode().equals(code)) {
                 return statusType;
             }

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.douma.woyo.db.dao.DriverSharingInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.douma.woyo.db.entity.DriverSharingInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="idno" property="idno" jdbcType="VARCHAR" />
+    <result column="car_no" property="carNo" jdbcType="VARCHAR" />
+    <result column="contract_type" property="contractType" jdbcType="VARCHAR" />
+    <result column="setoff_time" property="setoffTime" jdbcType="TIMESTAMP" />
+    <result column="departure_id" property="departureId" jdbcType="VARCHAR" />
+    <result column="destination_id" property="destinationId" jdbcType="VARCHAR" />
+    <result column="totel_seat" property="totelSeat" jdbcType="INTEGER" />
+    <result column="remainder_seat" property="remainderSeat" jdbcType="INTEGER" />
+    <result column="publish_time" property="publishTime" jdbcType="TIMESTAMP" />
+    <result column="total_price" property="totalPrice" jdbcType="DECIMAL" />
+    <result column="unit_price" property="unitPrice" jdbcType="DECIMAL" />
+    <result column="no_contract" property="noContract" jdbcType="CHAR" />
+    <result column="complete_flg" property="completeFlg" jdbcType="CHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, idno, car_no, contract_type, setoff_time, departure_id, destination_id, totel_seat, 
+    remainder_seat, publish_time, total_price, unit_price, no_contract, complete_flg, 
+    remarks
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.douma.woyo.db.entity.DriverSharingInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from driver_sharing_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from driver_sharing_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from driver_sharing_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.douma.woyo.db.entity.DriverSharingInfoExample" >
+    delete from driver_sharing_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.douma.woyo.db.entity.DriverSharingInfo" useGeneratedKeys="true" keyProperty="id" >
+    insert into driver_sharing_info (idno, car_no, contract_type, 
+      setoff_time, departure_id, destination_id, 
+      totel_seat, remainder_seat, publish_time, 
+      total_price, unit_price, no_contract, 
+      complete_flg, remarks)
+    values (#{idno,jdbcType=VARCHAR}, #{carNo,jdbcType=VARCHAR}, #{contractType,jdbcType=VARCHAR}, 
+      #{setoffTime,jdbcType=TIMESTAMP}, #{departureId,jdbcType=VARCHAR}, #{destinationId,jdbcType=VARCHAR}, 
+      #{totelSeat,jdbcType=INTEGER}, #{remainderSeat,jdbcType=INTEGER}, #{publishTime,jdbcType=TIMESTAMP}, 
+      #{totalPrice,jdbcType=DECIMAL}, #{unitPrice,jdbcType=DECIMAL}, #{noContract,jdbcType=CHAR}, 
+      #{completeFlg,jdbcType=CHAR}, #{remarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.douma.woyo.db.entity.DriverSharingInfo" useGeneratedKeys="true" keyProperty="id" >
+    insert into driver_sharing_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idno != null" >
+        idno,
+      </if>
+      <if test="carNo != null" >
+        car_no,
+      </if>
+      <if test="contractType != null" >
+        contract_type,
+      </if>
+      <if test="setoffTime != null" >
+        setoff_time,
+      </if>
+      <if test="departureId != null" >
+        departure_id,
+      </if>
+      <if test="destinationId != null" >
+        destination_id,
+      </if>
+      <if test="totelSeat != null" >
+        totel_seat,
+      </if>
+      <if test="remainderSeat != null" >
+        remainder_seat,
+      </if>
+      <if test="publishTime != null" >
+        publish_time,
+      </if>
+      <if test="totalPrice != null" >
+        total_price,
+      </if>
+      <if test="unitPrice != null" >
+        unit_price,
+      </if>
+      <if test="noContract != null" >
+        no_contract,
+      </if>
+      <if test="completeFlg != null" >
+        complete_flg,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idno != null" >
+        #{idno,jdbcType=VARCHAR},
+      </if>
+      <if test="carNo != null" >
+        #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contractType != null" >
+        #{contractType,jdbcType=VARCHAR},
+      </if>
+      <if test="setoffTime != null" >
+        #{setoffTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="departureId != null" >
+        #{departureId,jdbcType=VARCHAR},
+      </if>
+      <if test="destinationId != null" >
+        #{destinationId,jdbcType=VARCHAR},
+      </if>
+      <if test="totelSeat != null" >
+        #{totelSeat,jdbcType=INTEGER},
+      </if>
+      <if test="remainderSeat != null" >
+        #{remainderSeat,jdbcType=INTEGER},
+      </if>
+      <if test="publishTime != null" >
+        #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalPrice != null" >
+        #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="noContract != null" >
+        #{noContract,jdbcType=CHAR},
+      </if>
+      <if test="completeFlg != null" >
+        #{completeFlg,jdbcType=CHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.douma.woyo.db.entity.DriverSharingInfoExample" resultType="java.lang.Integer" >
+    select count(*) from driver_sharing_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update driver_sharing_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.idno != null" >
+        idno = #{record.idno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carNo != null" >
+        car_no = #{record.carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contractType != null" >
+        contract_type = #{record.contractType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.setoffTime != null" >
+        setoff_time = #{record.setoffTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.departureId != null" >
+        departure_id = #{record.departureId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.destinationId != null" >
+        destination_id = #{record.destinationId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totelSeat != null" >
+        totel_seat = #{record.totelSeat,jdbcType=INTEGER},
+      </if>
+      <if test="record.remainderSeat != null" >
+        remainder_seat = #{record.remainderSeat,jdbcType=INTEGER},
+      </if>
+      <if test="record.publishTime != null" >
+        publish_time = #{record.publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.totalPrice != null" >
+        total_price = #{record.totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.unitPrice != null" >
+        unit_price = #{record.unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.noContract != null" >
+        no_contract = #{record.noContract,jdbcType=CHAR},
+      </if>
+      <if test="record.completeFlg != null" >
+        complete_flg = #{record.completeFlg,jdbcType=CHAR},
+      </if>
+      <if test="record.remarks != null" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update driver_sharing_info
+    set id = #{record.id,jdbcType=BIGINT},
+      idno = #{record.idno,jdbcType=VARCHAR},
+      car_no = #{record.carNo,jdbcType=VARCHAR},
+      contract_type = #{record.contractType,jdbcType=VARCHAR},
+      setoff_time = #{record.setoffTime,jdbcType=TIMESTAMP},
+      departure_id = #{record.departureId,jdbcType=VARCHAR},
+      destination_id = #{record.destinationId,jdbcType=VARCHAR},
+      totel_seat = #{record.totelSeat,jdbcType=INTEGER},
+      remainder_seat = #{record.remainderSeat,jdbcType=INTEGER},
+      publish_time = #{record.publishTime,jdbcType=TIMESTAMP},
+      total_price = #{record.totalPrice,jdbcType=DECIMAL},
+      unit_price = #{record.unitPrice,jdbcType=DECIMAL},
+      no_contract = #{record.noContract,jdbcType=CHAR},
+      complete_flg = #{record.completeFlg,jdbcType=CHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.douma.woyo.db.entity.DriverSharingInfo" >
+    update driver_sharing_info
+    <set >
+      <if test="idno != null" >
+        idno = #{idno,jdbcType=VARCHAR},
+      </if>
+      <if test="carNo != null" >
+        car_no = #{carNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contractType != null" >
+        contract_type = #{contractType,jdbcType=VARCHAR},
+      </if>
+      <if test="setoffTime != null" >
+        setoff_time = #{setoffTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="departureId != null" >
+        departure_id = #{departureId,jdbcType=VARCHAR},
+      </if>
+      <if test="destinationId != null" >
+        destination_id = #{destinationId,jdbcType=VARCHAR},
+      </if>
+      <if test="totelSeat != null" >
+        totel_seat = #{totelSeat,jdbcType=INTEGER},
+      </if>
+      <if test="remainderSeat != null" >
+        remainder_seat = #{remainderSeat,jdbcType=INTEGER},
+      </if>
+      <if test="publishTime != null" >
+        publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalPrice != null" >
+        total_price = #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="unitPrice != null" >
+        unit_price = #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="noContract != null" >
+        no_contract = #{noContract,jdbcType=CHAR},
+      </if>
+      <if test="completeFlg != null" >
+        complete_flg = #{completeFlg,jdbcType=CHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.douma.woyo.db.entity.DriverSharingInfo" >
+    update driver_sharing_info
+    set idno = #{idno,jdbcType=VARCHAR},
+      car_no = #{carNo,jdbcType=VARCHAR},
+      contract_type = #{contractType,jdbcType=VARCHAR},
+      setoff_time = #{setoffTime,jdbcType=TIMESTAMP},
+      departure_id = #{departureId,jdbcType=VARCHAR},
+      destination_id = #{destinationId,jdbcType=VARCHAR},
+      totel_seat = #{totelSeat,jdbcType=INTEGER},
+      remainder_seat = #{remainderSeat,jdbcType=INTEGER},
+      publish_time = #{publishTime,jdbcType=TIMESTAMP},
+      total_price = #{totalPrice,jdbcType=DECIMAL},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      no_contract = #{noContract,jdbcType=CHAR},
+      complete_flg = #{completeFlg,jdbcType=CHAR},
+      remarks = #{remarks,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

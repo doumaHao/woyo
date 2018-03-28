@@ -1,20 +1,17 @@
-package cn.douma.woyo.service.constant;
+package cn.douma.woyo.constant;
 
 /**
- * 订单状态
+ * 性别类型
  */
-public enum OrderStatusEnum implements BaseEnum<String, OrderStatusEnum, String> {
+public enum SexEnum implements BaseEnum<String, SexEnum, String> {
 
-    TYPE_10("01", "待定金"),
-    TYPE_11("02", "待乘运"),
-    TYPE_12("03", "待支付"),
-    TYPE_13("04", "待评价"),
-    TYPE_14("05", "完成");
+    MAN("1", "男"),
+    WOMAN("2", "女");
 
     private String code;
     private String name;
 
-    private OrderStatusEnum(String code, String name) {
+    private SexEnum(String code, String name) {
         this.code = code;
         this.name = name;
     }
@@ -34,10 +31,10 @@ public enum OrderStatusEnum implements BaseEnum<String, OrderStatusEnum, String>
         return this.code + "";
     }
 
-    public static OrderStatusEnum getEnumByName(String name) {
+    public static SexEnum getEnumByName(String name) {
         if (name == null)
             return null;
-        for (OrderStatusEnum statusType : OrderStatusEnum.values()) {
+        for (SexEnum statusType : SexEnum.values()) {
             if (statusType.getName().equals(name)) {
                 return statusType;
             }
@@ -45,10 +42,10 @@ public enum OrderStatusEnum implements BaseEnum<String, OrderStatusEnum, String>
         return null;
     }
 
-    public static OrderStatusEnum getEnumByCode(String code) {
+    public static SexEnum getEnumByCode(String code) {
         if (code == null)
             return null;
-        for (OrderStatusEnum statusType : OrderStatusEnum.values()) {
+        for (SexEnum statusType : SexEnum.values()) {
             if (statusType.getCode().equals(code)) {
                 return statusType;
             }

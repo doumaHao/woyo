@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2017/11/12 22:03:55                          */
+/* Created on:     2018/3/28/周三 19:35:02                        */
 /*==============================================================*/
 
 
@@ -20,7 +20,7 @@ drop table if exists user_info;
 create table car_info
 (
    id                   bigint(20) not null auto_increment comment 'id',
-   user_id              bigint(20) comment '用户id',
+   idno                 varchar(20) comment '车主身份证号',
    car_no               varchar(10) comment '车牌号',
    car_no_img           varchar(200) comment '车牌照片',
    car_type             varchar(2) comment '车类型 01-轿车 02-SUV 03-MPV 04-大巴 05-货车',
@@ -40,13 +40,12 @@ alter table car_info comment '司机表';
 create table driver_sharing_info
 (
    id                   bigint(20) not null auto_increment,
-   user_id              bigint(20) comment '用户id',
-   car_id               bigint(20),
-   contract_type        varchar(2) comment '拼车方式 01-拼车 02-包车 03-都可以',
+   idno                 varchar(20) comment '身份证号',
+   car_no               varchar(20) comment '车牌号',
+   contract_type        varchar(2) comment '拼车方式 01-拼车 02-包车',
    setoff_time          datetime comment '发车时间',
-   setoff_date          varchar(8) comment '出发日期 yyyyMMdd',
-   departure_id         bigint(20) comment '发车地点 地址id',
-   destination_id       bigint(20) comment '目的地 地址id',
+   departure_id         varchar(100) comment '发车地点',
+   destination_id       varchar(100) comment '目的地',
    totel_seat           int(2) comment '总座位数 不带司机',
    remainder_seat       int(2) comment '剩余座位数',
    publish_time         datetime comment '发布时间',
@@ -54,7 +53,6 @@ create table driver_sharing_info
    unit_price           decimal comment '单价 拼车',
    no_contract          char(1) comment '是否可包车 0-不可 1-可以',
    complete_flg         char(1) comment '是否完成 0-未完成 1-完成',
-   delete_flg           char(1) comment '删除标志 0-未删除 1-删除',
    remarks              varchar(200),
    primary key (id)
 );
@@ -81,10 +79,10 @@ alter table provincial_city comment '省市区表';
 create table user_address
 (
    id                   bigint(20) not null auto_increment comment 'id',
-   user_id              bigint(20) comment '用户id',
-   province_id          bigint(20) comment '省id',
-   city_id              bigint(20) comment '市id',
-   area_id              bigint(20) comment '区id',
+   idno                 varchar(20) comment '身份证号',
+   province_id          varchar(20) comment '省id',
+   city_id              varchar(20) comment '市id',
+   area_id              varchar(20) comment '区id',
    area_info            varchar(100) comment '具体县街道等其他信息',
    last_use_date        datetime comment '上次使用时间',
    use_times            int(8) comment '总共使用次数',

@@ -18,12 +18,12 @@
         </dependency>
         <dependency>
             <groupId>cn.douma.woyo</groupId>
-            <artifactId>woyo-entity</artifactId>
+            <artifactId>woyo-util</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>cn.douma.woyo</groupId>
-            <artifactId>woyo-util</artifactId>
+            <groupId>com.magfin.risk</groupId>
+            <artifactId>risk-service</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

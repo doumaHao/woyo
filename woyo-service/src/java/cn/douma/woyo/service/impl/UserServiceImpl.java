@@ -1,17 +1,18 @@
 package cn.douma.woyo.service.impl;
 
+import cn.douma.woyo.constant.SexEnum;
+import cn.douma.woyo.constant.UserRegTypeEnum;
+import cn.douma.woyo.constant.UserStatusEnum;
+import cn.douma.woyo.core.UserManager;
 import cn.douma.woyo.db.dao.UserInfoMapper;
 import cn.douma.woyo.db.entity.UserInfo;
 import cn.douma.woyo.db.entity.UserInfoExample;
+import cn.douma.woyo.exception.CheckException;
 import cn.douma.woyo.service.UserService;
-import cn.douma.woyo.service.constant.SexEnum;
-import cn.douma.woyo.service.constant.UserRegTypeEnum;
-import cn.douma.woyo.service.constant.UserStatusEnum;
-import cn.douma.woyo.service.exception.CheckException;
 import cn.douma.woyo.util.DateUtil;
 import cn.douma.woyo.util.ListUtil;
 import cn.douma.woyo.util.MD5Util;
-import cn.douma.woyo.util.StringUtil;
+import cn.douma.woyo.vo.LoginUserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
@@ -88,23 +89,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserInfo loginByPassword(String login, String password) {
+    public LoginUserVo loginByPassword(String login, String password) {
         UserInfoExample userInfoExample = new UserInfoExample();
         userInfoExample.createCriteria()
                 .andLoginEqualTo(login);
         List<UserInfo> userInfoList = userInfoMapper.selectByExample(userInfoExample);
-        if(ListUtil.isNotEmpty(userInfoList)){
-            String password = userInfoList.get(0).getPassword();
-            if(StringUtil.){
-
+        if (ListUtil.isNotEmpty(userInfoList)) {
+            UserInfo userInfo = userInfoList.get(0);
+            String pswd = userInfoList.get(0).getPassword();
+            if (pswd.equals(MD5Util.MD5(password))) {
+                LoginUserVo loginUserVo = new LoginUserVo();
+                loginUserVo.setUserInfo(userInfo);
+                UserManager.getInstance().addSysUser(loginUserVo);
+                return loginUserVo;
             }
         }
         return null;
     }
 
     @Override
-    public boolean userLogout(String username) {
-        return false;
+    public boolean userLogout() {
+        UserManager.getInstance().removeSysUser();
+        return true;
     }
 
     /**

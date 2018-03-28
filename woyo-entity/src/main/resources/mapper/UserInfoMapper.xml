@@ -9,7 +9,7 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="idno" property="idno" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="VARCHAR" />
-    <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="INTEGER" />
     <result column="native_place" property="nativePlace" jdbcType="VARCHAR" />
     <result column="qq" property="qq" jdbcType="VARCHAR" />
     <result column="wechar" property="wechar" jdbcType="VARCHAR" />
@@ -121,7 +121,7 @@
       reg_time, last_login_time, login_times, 
       state)
     values (#{login,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{idno,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{idno,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=INTEGER}, 
       #{nativePlace,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{wechar,jdbcType=VARCHAR}, 
       #{mail,jdbcType=VARCHAR}, #{score,jdbcType=INTEGER}, #{regType,jdbcType=VARCHAR}, 
       #{regTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{loginTimes,jdbcType=INTEGER}, 
@@ -202,7 +202,7 @@
         #{sex,jdbcType=VARCHAR},
       </if>
       <if test="birthday != null" >
-        #{birthday,jdbcType=VARCHAR},
+        #{birthday,jdbcType=INTEGER},
       </if>
       <if test="nativePlace != null" >
         #{nativePlace,jdbcType=VARCHAR},
@@ -267,7 +267,7 @@
         sex = #{record.sex,jdbcType=VARCHAR},
       </if>
       <if test="record.birthday != null" >
-        birthday = #{record.birthday,jdbcType=VARCHAR},
+        birthday = #{record.birthday,jdbcType=INTEGER},
       </if>
       <if test="record.nativePlace != null" >
         native_place = #{record.nativePlace,jdbcType=VARCHAR},
@@ -313,7 +313,7 @@
       name = #{record.name,jdbcType=VARCHAR},
       idno = #{record.idno,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=VARCHAR},
-      birthday = #{record.birthday,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=INTEGER},
       native_place = #{record.nativePlace,jdbcType=VARCHAR},
       qq = #{record.qq,jdbcType=VARCHAR},
       wechar = #{record.wechar,jdbcType=VARCHAR},
@@ -350,7 +350,7 @@
         sex = #{sex,jdbcType=VARCHAR},
       </if>
       <if test="birthday != null" >
-        birthday = #{birthday,jdbcType=VARCHAR},
+        birthday = #{birthday,jdbcType=INTEGER},
       </if>
       <if test="nativePlace != null" >
         native_place = #{nativePlace,jdbcType=VARCHAR},
@@ -393,7 +393,7 @@
       name = #{name,jdbcType=VARCHAR},
       idno = #{idno,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
-      birthday = #{birthday,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=INTEGER},
       native_place = #{nativePlace,jdbcType=VARCHAR},
       qq = #{qq,jdbcType=VARCHAR},
       wechar = #{wechar,jdbcType=VARCHAR},

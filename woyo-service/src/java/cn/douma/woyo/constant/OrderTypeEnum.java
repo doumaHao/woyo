@@ -1,4 +1,4 @@
-package cn.douma.woyo.service.constant;
+package cn.douma.woyo.constant;
 
 /**
  * 订单类型

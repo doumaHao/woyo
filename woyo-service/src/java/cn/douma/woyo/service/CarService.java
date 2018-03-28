@@ -15,10 +15,11 @@ public interface CarService {
     /**
      * 增加车辆信息
      *
+     * @param userId
      * @param carInfo
      * @return
      */
-    CarInfo carAdd(CarInfo carInfo);
+    CarInfo add(String userId, CarInfo carInfo);
 
     /**
      * 修改车辆信息
@@ -26,5 +27,5 @@ public interface CarService {
      * @param carInfo
      * @return
      */
-    UserInfo carUpdate(CarInfo carInfo);
+    CarInfo update(CarInfo carInfo);
 }

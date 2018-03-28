@@ -1,6 +1,7 @@
 package cn.douma.woyo.service;
 
 import cn.douma.woyo.db.entity.UserInfo;
+import cn.douma.woyo.vo.LoginUserVo;
 
 /**
  * Copyright (c) 2017. douma.cn, All Rights Reserved
@@ -38,17 +39,16 @@ public interface UserService {
     /**
      * 根据用户名密码登录
      *
-     * @param username
+     * @param login
      * @param password
      * @return
      */
-    UserInfo loginByPassword(String login, String password);
+    LoginUserVo loginByPassword(String login, String password);
 
     /**
      * 用户注销登录
      *
-     * @param username
      * @return
      */
-    boolean userLogout(String username);
+    boolean userLogout();
 }

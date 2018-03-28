@@ -17,7 +17,7 @@ public class UserInfo {
 
     private String sex;
 
-    private String birthday;
+    private Integer birthday;
 
     private String nativePlace;
 
@@ -95,12 +95,12 @@ public class UserInfo {
         this.sex = sex == null ? null : sex.trim();
     }
 
-    public String getBirthday() {
+    public Integer getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday == null ? null : birthday.trim();
+    public void setBirthday(Integer birthday) {
+        this.birthday = birthday;
     }
 
     public String getNativePlace() {

@@ -1,4 +1,4 @@
-package cn.douma.woyo.service.constant;
+package cn.douma.woyo.constant;
 
 /**
  * Copyright (c) 2017. douma.cn, All Rights Reserved
@@ -7,7 +7,7 @@ package cn.douma.woyo.service.constant;
  * Date: 2017-11-13
  * Time: 20:48
  */
-public interface BaseEnum<C, T extends Enum<T> & BaseEnum<C, T, V>, V> {
+public interface BaseEnum<C, V> {
     /**
      * code
      *

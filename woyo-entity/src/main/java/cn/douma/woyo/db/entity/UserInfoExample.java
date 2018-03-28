@@ -595,62 +595,52 @@ public class UserInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayEqualTo(String value) {
+        public Criteria andBirthdayEqualTo(Integer value) {
             addCriterion("birthday =", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayNotEqualTo(String value) {
+        public Criteria andBirthdayNotEqualTo(Integer value) {
             addCriterion("birthday <>", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayGreaterThan(String value) {
+        public Criteria andBirthdayGreaterThan(Integer value) {
             addCriterion("birthday >", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayGreaterThanOrEqualTo(String value) {
+        public Criteria andBirthdayGreaterThanOrEqualTo(Integer value) {
             addCriterion("birthday >=", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayLessThan(String value) {
+        public Criteria andBirthdayLessThan(Integer value) {
             addCriterion("birthday <", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayLessThanOrEqualTo(String value) {
+        public Criteria andBirthdayLessThanOrEqualTo(Integer value) {
             addCriterion("birthday <=", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayLike(String value) {
-            addCriterion("birthday like", value, "birthday");
-            return (Criteria) this;
-        }
-
-        public Criteria andBirthdayNotLike(String value) {
-            addCriterion("birthday not like", value, "birthday");
-            return (Criteria) this;
-        }
-
-        public Criteria andBirthdayIn(List<String> values) {
+        public Criteria andBirthdayIn(List<Integer> values) {
             addCriterion("birthday in", values, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayNotIn(List<String> values) {
+        public Criteria andBirthdayNotIn(List<Integer> values) {
             addCriterion("birthday not in", values, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayBetween(String value1, String value2) {
+        public Criteria andBirthdayBetween(Integer value1, Integer value2) {
             addCriterion("birthday between", value1, value2, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andBirthdayNotBetween(String value1, String value2) {
+        public Criteria andBirthdayNotBetween(Integer value1, Integer value2) {
             addCriterion("birthday not between", value1, value2, "birthday");
             return (Criteria) this;
         }

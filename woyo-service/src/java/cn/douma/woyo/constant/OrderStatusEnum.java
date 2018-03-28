@@ -1,18 +1,20 @@
-package cn.douma.woyo.service.constant;
+package cn.douma.woyo.constant;
 
 /**
- * 用户注册方式
+ * 订单状态
  */
-public enum UserRegTypeEnum implements BaseEnum<String, UserRegTypeEnum, String> {
+public enum OrderStatusEnum implements BaseEnum<String, OrderStatusEnum, String> {
 
-    TYPE_01("01", "微信公众号"),
-    TYPE_02("02", "PC网页"),
-    TYPE_03("03", "APP");
+    TYPE_10("01", "待定金"),
+    TYPE_11("02", "待乘运"),
+    TYPE_12("03", "待支付"),
+    TYPE_13("04", "待评价"),
+    TYPE_14("05", "完成");
 
     private String code;
     private String name;
 
-    private UserRegTypeEnum(String code, String name) {
+    private OrderStatusEnum(String code, String name) {
         this.code = code;
         this.name = name;
     }
@@ -32,10 +34,10 @@ public enum UserRegTypeEnum implements BaseEnum<String, UserRegTypeEnum, String>
         return this.code + "";
     }
 
-    public static UserRegTypeEnum getEnumByName(String name) {
+    public static OrderStatusEnum getEnumByName(String name) {
         if (name == null)
             return null;
-        for (UserRegTypeEnum statusType : UserRegTypeEnum.values()) {
+        for (OrderStatusEnum statusType : OrderStatusEnum.values()) {
             if (statusType.getName().equals(name)) {
                 return statusType;
             }
@@ -43,10 +45,10 @@ public enum UserRegTypeEnum implements BaseEnum<String, UserRegTypeEnum, String>
         return null;
     }
 
-    public static UserRegTypeEnum getEnumByCode(String code) {
+    public static OrderStatusEnum getEnumByCode(String code) {
         if (code == null)
             return null;
-        for (UserRegTypeEnum statusType : UserRegTypeEnum.values()) {
+        for (OrderStatusEnum statusType : OrderStatusEnum.values()) {
             if (statusType.getCode().equals(code)) {
                 return statusType;
             }

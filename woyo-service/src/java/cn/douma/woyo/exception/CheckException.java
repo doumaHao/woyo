@@ -1,4 +1,4 @@
-package cn.douma.woyo.service.exception;
+package cn.douma.woyo.exception;
 
 /**
  * Copyright (c) 2017. douma.cn, All Rights Reserved

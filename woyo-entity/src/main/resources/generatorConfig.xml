@@ -7,8 +7,8 @@
     <classPathEntry
             location="C:/Users/Administrator/.m2/repository/mysql/mysql-connector-java/5.1.42/mysql-connector-java-5.1.42.jar"/>
     <context id="my" targetRuntime="MyBatis3">
+
         <commentGenerator>
-            <property name="suppressDate" value="false"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
@@ -33,6 +33,8 @@
                              type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
+
+
 
         <table schema="woyo" tableName="car_info">
             <generatedKey column="id" sqlStatement="JDBC"/>
