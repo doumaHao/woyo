@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>cn.douma.woyo</groupId>
-    <artifactId>woyo-service</artifactId>
+    <artifactId>mybatis-plugin</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
@@ -17,15 +17,16 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.douma.woyo</groupId>
-            <artifactId>woyo-entity</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.2</version>
         </dependency>
         <dependency>
-            <groupId>cn.douma.woyo</groupId>
-            <artifactId>woyo-util</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.1.0</version>
         </dependency>
     </dependencies>
+
 
 </project>

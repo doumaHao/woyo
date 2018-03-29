@@ -1,6 +1,7 @@
 package cn.douma.woyo.service;
 
 import cn.douma.woyo.db.entity.UserAddress;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * Date: 2018-03-28
  * Time: 17:55
  */
+@Service
 public interface AddressService {
 
     /**

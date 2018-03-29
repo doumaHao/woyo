@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
         //性别
         userInfo.setSex(getSexForIdno(idno));
         //生日
-        userInfo.setBirthday(this.getBrithdayForIdno(idno));
+//        userInfo.setBirthday(this.getBrithdayForIdno(idno));
         //用户评分
         userInfo.setScore(this.getUserScoreForReg(userInfo));
         //注册方式

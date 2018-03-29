@@ -7,7 +7,7 @@ package cn.douma.woyo.constant;
  * Date: 2017-11-13
  * Time: 20:48
  */
-public interface BaseEnum<C, V> {
+public interface BaseEnum<C, T extends Enum<T> & BaseEnum<C, T, V>, V> {
     /**
      * code
      *
