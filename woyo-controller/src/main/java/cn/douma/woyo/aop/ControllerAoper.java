@@ -33,7 +33,7 @@ public class ControllerAoper {
         try {
             pjp.proceed();
         } catch (Exception e) {
-            System.out.println(">>>>>exception");
+            System.out.println(">>>>>exception " + e.getMessage());
             e.printStackTrace();
         }
         System.out.println(">>>>>Around-to");
