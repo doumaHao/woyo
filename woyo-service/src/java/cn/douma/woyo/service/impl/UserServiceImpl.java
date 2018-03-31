@@ -14,6 +14,7 @@ import cn.douma.woyo.util.ListUtil;
 import cn.douma.woyo.util.MD5Util;
 import cn.douma.woyo.vo.LoginUserVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
@@ -25,11 +26,25 @@ import java.util.List;
  * Date: 2017-11-13
  * Time: 20:49
  */
+@SuppressWarnings("ALL")
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserInfoMapper userInfoMapper;
 
+    @Override
+    public UserInfo register(String regMethod, UserInfo userInfo) {
+        if ("pc".equals(regMethod)) {
+            return registerByPc(userInfo);
+        } else if ("app".equals(regMethod)) {
+            return registerByApp(userInfo);
+        } else if ("weixin".equals(regMethod)) {
+            return registerByWeixin(userInfo);
+        } else {
+            throw new CheckException("注册方式异常");
+        }
+    }
 
     @Override
     public UserInfo registerByWeixin(UserInfo userInfo) {

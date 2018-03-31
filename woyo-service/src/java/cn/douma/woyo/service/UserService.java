@@ -13,6 +13,15 @@ import cn.douma.woyo.vo.LoginUserVo;
 public interface UserService {
 
     /**
+     * 注册用户
+     *
+     * @param regMethod
+     * @param userInfo
+     * @return
+     */
+    UserInfo register(String regMethod, UserInfo userInfo);
+
+    /**
      * 微信公众号注册用户
      *
      * @param userInfo
