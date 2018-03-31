@@ -26,7 +26,9 @@ public class UserController {
     @PostMapping("/register")
     @ResponseBody
     public UserInfo register(String regMethod, UserInfo userInfo) {
+        System.out.println("<<<<<<进来");
         userInfo = userService.register(regMethod, userInfo);
+        System.out.println("<<<<<<出去");
         return userInfo;
     }
 }

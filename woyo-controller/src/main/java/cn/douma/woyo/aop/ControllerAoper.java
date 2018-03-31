@@ -1,6 +1,7 @@
 package cn.douma.woyo.aop;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
@@ -21,35 +22,36 @@ public class ControllerAoper {
 
     }
 
-    /**
-     * 执行方法前
-     *
-     * @param jp 连接点
-     */
-    @Before("pointCut()")
-    public void Before(JoinPoint jp) {
+    @Before(value = "pointCut()")
+    public void before(JoinPoint joinPoint) {
         System.out.println(">>>>>Before");
     }
 
-    /**
-     * 返回后
-     *
-     * @param jp
-     * @param result
-     */
-    @AfterReturning(value = "pointCut()", returning = "result")
-    public void AfterReturning(JoinPoint jp, Object result) {
+    @Around(value = "pointCut()")
+    public void around(ProceedingJoinPoint pjp) throws  Throwable{
+        System.out.println(">>>>>Around-from");
+        try {
+            pjp.proceed();
+        } catch (Exception e) {
+            System.out.println(">>>>>exception");
+            e.printStackTrace();
+        }
+        System.out.println(">>>>>Around-to");
+    }
+
+    @AfterReturning(value = "pointCut()")
+    public void afterReturning(JoinPoint joinPoint) {
         System.out.println(">>>>>AfterReturning");
     }
 
-    /**
-     * 抛出后
-     *
-     * @param jp
-     */
     @AfterThrowing(value = "pointCut()")
-    public void AfterThrowing(Throwable ex) {
+    public void afterThrowing(JoinPoint joinPoint) {
         System.out.println(">>>>>AfterThrowing");
+    }
+
+    @After(value = "pointCut()")
+    public void after(JoinPoint joinPoint) {
+        System.out.println(">>>>>After");
     }
 
 }
