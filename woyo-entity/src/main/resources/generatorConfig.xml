@@ -18,18 +18,18 @@
                         password="Woyo123"/>
 
         <javaModelGenerator targetPackage="cn.douma.woyo.db.entity"
-                            targetProject="F:\workspace\woyo\woyo-entity\src\main\java">
+                            targetProject="D:\workspace\woyo\woyo-entity\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="mapper"
-                         targetProject="F:\workspace\woyo\woyo-entity\src\main\resources">
+                         targetProject="D:\workspace\woyo\woyo-entity\src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <javaClientGenerator targetPackage="cn.douma.woyo.db.dao"
-                             targetProject="F:\workspace\woyo\woyo-entity\src\main\java"
+                             targetProject="D:\workspace\woyo\woyo-entity\src\main\java"
                              type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
@@ -37,7 +37,22 @@
         <table schema="woyo" tableName="car_info">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
-        <table schema="woyo" tableName="driver_sharing_info">
+        <table schema="woyo" tableName="driver_order">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="woyo" tableName="driver_share_info">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="woyo" tableName="evaluate_info">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="woyo" tableName="passer_detail">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="woyo" tableName="passer_order">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table schema="woyo" tableName="passer_share_info">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
         <table schema="woyo" tableName="provincial_city">

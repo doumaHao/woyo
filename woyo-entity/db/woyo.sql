@@ -1,12 +1,22 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/3/28/周三 19:35:02                        */
+/* Created on:     2018/4/2 22:40:20                            */
 /*==============================================================*/
 
 
 drop table if exists car_info;
 
-drop table if exists driver_sharing_info;
+drop table if exists driver_order;
+
+drop table if exists driver_share_info;
+
+drop table if exists evaluate_info;
+
+drop table if exists passer_detail;
+
+drop table if exists passer_order;
+
+drop table if exists passer_share_info;
 
 drop table if exists provincial_city;
 
@@ -35,9 +45,26 @@ create table car_info
 alter table car_info comment '司机表';
 
 /*==============================================================*/
-/* Table: driver_sharing_info                                   */
+/* Table: driver_order                                          */
 /*==============================================================*/
-create table driver_sharing_info
+create table driver_order
+(
+   id                   bigint(20) not null auto_increment,
+   driver_share_id      bigint(20) comment '司机需求id',
+   passer_share_id      bigint(20) comment '乘客需求id',
+   consume_seat         int(3) comment '消耗座位数',
+   order_price          decimal(16,4) comment '订单价格',
+   order_time           datetime comment '订单时间',
+   order_status         varchar(2) comment '订单状态 01-已下单 02-已付款 03-已取消 04-已完成 05-已评价',
+   primary key (id)
+);
+
+alter table driver_order comment '司机订单表';
+
+/*==============================================================*/
+/* Table: driver_share_info                                     */
+/*==============================================================*/
+create table driver_share_info
 (
    id                   bigint(20) not null auto_increment,
    idno                 varchar(20) comment '身份证号',
@@ -57,7 +84,74 @@ create table driver_sharing_info
    primary key (id)
 );
 
-alter table driver_sharing_info comment '车找人表';
+alter table driver_share_info comment '司机需求表';
+
+/*==============================================================*/
+/* Table: evaluate_info                                         */
+/*==============================================================*/
+create table evaluate_info
+(
+   id                   bigint(20) not null auto_increment,
+   evaluate_type        varchar(2) comment '评价种类 01-司机对乘客评价 02-乘客对司机评价',
+   idno                 varchar(20) comment '评价对象身份证号',
+   elavater_idno        varchar(20) comment '评价者身份证',
+   driver_order_id      bigint(20) comment '评价依旧司机订单',
+   passer_order         bigint(20) comment '评价依据乘客订单',
+   evaluate_score       int(3) comment '评价分数',
+   evaluate_time        datetime comment '评价时间',
+   evaluate_content     varchar(500) comment '评价内容',
+   primary key (id)
+);
+
+alter table evaluate_info comment '评价信息表';
+
+/*==============================================================*/
+/* Table: passer_detail                                         */
+/*==============================================================*/
+create table passer_detail
+(
+   id                   bigint(20) not null auto_increment,
+   passer_share_id      bigint(20),
+   idno                 varchar(20) comment '身份证号',
+   name                 varchar(20) comment '姓名',
+   price_status         varchar(2) comment '乘客票价状态 01-全票 02-半价票 03-免费票',
+   primary key (id)
+);
+
+alter table passer_detail comment '乘客需求人表';
+
+/*==============================================================*/
+/* Table: passer_order                                          */
+/*==============================================================*/
+create table passer_order
+(
+   id                   bigint(20) not null auto_increment,
+   passer_share_id      bigint(20),
+   driver_share_id      bigint(20),
+   consume_seat         int(3),
+   order_price          decimal(16,4),
+   order_time           datetime,
+   order_status         varchar(2),
+   primary key (id)
+);
+
+alter table passer_order comment '乘客订单表';
+
+/*==============================================================*/
+/* Table: passer_share_info                                     */
+/*==============================================================*/
+create table passer_share_info
+(
+   id                   bigint(20) not null auto_increment,
+   main_passer          varchar(20) comment '主要负责人身份证号',
+   car_type             varchar(2) comment '需求车辆种类',
+   need_seat            int(3) comment '需求座位数',
+   need_time            datetime comment '需求时间',
+   need_status          varchar(2) comment '需求状态 01-未完成 02-完成',
+   primary key (id)
+);
+
+alter table passer_share_info comment '乘客需求表';
 
 /*==============================================================*/
 /* Table: provincial_city                                       */

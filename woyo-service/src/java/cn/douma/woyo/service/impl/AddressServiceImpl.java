@@ -5,7 +5,7 @@ import cn.douma.woyo.db.entity.UserAddress;
 import cn.douma.woyo.db.entity.UserAddressExample;
 import cn.douma.woyo.exception.CheckException;
 import cn.douma.woyo.service.AddressService;
-import cn.douma.woyo.util.StringUtil;
+import com.github.pagehelper.util.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,8 +33,8 @@ public class AddressServiceImpl implements AddressService {
         String areaId = userAddress.getAreaId();
         if (StringUtils.isBlank(idno)
                 || StringUtils.isBlank(provinceId)
-                || StringUtil.isBlank(cityId)
-                || StringUtil.isBlank(areaId)) {
+                || StringUtils.isBlank(cityId)
+                || StringUtils.isBlank(areaId)) {
             throw new CheckException("身份证编号、省市区id不能为空");
         }
         userAddress.setIdno(idno);
