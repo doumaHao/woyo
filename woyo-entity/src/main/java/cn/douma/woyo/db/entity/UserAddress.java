@@ -5,13 +5,13 @@ import java.util.Date;
 public class UserAddress {
     private Long id;
 
-    private Long userId;
+    private String idno;
 
-    private Long provinceId;
+    private String provinceId;
 
-    private Long cityId;
+    private String cityId;
 
-    private Long areaId;
+    private String areaId;
 
     private String areaInfo;
 
@@ -27,36 +27,36 @@ public class UserAddress {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getIdno() {
+        return idno;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setIdno(String idno) {
+        this.idno = idno == null ? null : idno.trim();
     }
 
-    public Long getProvinceId() {
+    public String getProvinceId() {
         return provinceId;
     }
 
-    public void setProvinceId(Long provinceId) {
-        this.provinceId = provinceId;
+    public void setProvinceId(String provinceId) {
+        this.provinceId = provinceId == null ? null : provinceId.trim();
     }
 
-    public Long getCityId() {
+    public String getCityId() {
         return cityId;
     }
 
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
+    public void setCityId(String cityId) {
+        this.cityId = cityId == null ? null : cityId.trim();
     }
 
-    public Long getAreaId() {
+    public String getAreaId() {
         return areaId;
     }
 
-    public void setAreaId(Long areaId) {
-        this.areaId = areaId;
+    public void setAreaId(String areaId) {
+        this.areaId = areaId == null ? null : areaId.trim();
     }
 
     public String getAreaInfo() {

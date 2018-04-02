@@ -5,19 +5,17 @@ import java.util.Date;
 public class DriverSharingInfo {
     private Long id;
 
-    private Long userId;
+    private String idno;
 
-    private Long carId;
+    private String carNo;
 
     private String contractType;
 
     private Date setoffTime;
 
-    private String setoffDate;
+    private String departureId;
 
-    private Long departureId;
-
-    private Long destinationId;
+    private String destinationId;
 
     private Integer totelSeat;
 
@@ -33,8 +31,6 @@ public class DriverSharingInfo {
 
     private String completeFlg;
 
-    private String deleteFlg;
-
     private String remarks;
 
     public Long getId() {
@@ -45,20 +41,20 @@ public class DriverSharingInfo {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getIdno() {
+        return idno;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setIdno(String idno) {
+        this.idno = idno == null ? null : idno.trim();
     }
 
-    public Long getCarId() {
-        return carId;
+    public String getCarNo() {
+        return carNo;
     }
 
-    public void setCarId(Long carId) {
-        this.carId = carId;
+    public void setCarNo(String carNo) {
+        this.carNo = carNo == null ? null : carNo.trim();
     }
 
     public String getContractType() {
@@ -77,28 +73,20 @@ public class DriverSharingInfo {
         this.setoffTime = setoffTime;
     }
 
-    public String getSetoffDate() {
-        return setoffDate;
-    }
-
-    public void setSetoffDate(String setoffDate) {
-        this.setoffDate = setoffDate == null ? null : setoffDate.trim();
-    }
-
-    public Long getDepartureId() {
+    public String getDepartureId() {
         return departureId;
     }
 
-    public void setDepartureId(Long departureId) {
-        this.departureId = departureId;
+    public void setDepartureId(String departureId) {
+        this.departureId = departureId == null ? null : departureId.trim();
     }
 
-    public Long getDestinationId() {
+    public String getDestinationId() {
         return destinationId;
     }
 
-    public void setDestinationId(Long destinationId) {
-        this.destinationId = destinationId;
+    public void setDestinationId(String destinationId) {
+        this.destinationId = destinationId == null ? null : destinationId.trim();
     }
 
     public Integer getTotelSeat() {
@@ -155,14 +143,6 @@ public class DriverSharingInfo {
 
     public void setCompleteFlg(String completeFlg) {
         this.completeFlg = completeFlg == null ? null : completeFlg.trim();
-    }
-
-    public String getDeleteFlg() {
-        return deleteFlg;
-    }
-
-    public void setDeleteFlg(String deleteFlg) {
-        this.deleteFlg = deleteFlg == null ? null : deleteFlg.trim();
     }
 
     public String getRemarks() {

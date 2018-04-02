@@ -165,123 +165,143 @@ public class DriverSharingInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNull() {
-            addCriterion("user_id is null");
+        public Criteria andIdnoIsNull() {
+            addCriterion("idno is null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIsNotNull() {
-            addCriterion("user_id is not null");
+        public Criteria andIdnoIsNotNull() {
+            addCriterion("idno is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdEqualTo(Long value) {
-            addCriterion("user_id =", value, "userId");
+        public Criteria andIdnoEqualTo(String value) {
+            addCriterion("idno =", value, "idno");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotEqualTo(Long value) {
-            addCriterion("user_id <>", value, "userId");
+        public Criteria andIdnoNotEqualTo(String value) {
+            addCriterion("idno <>", value, "idno");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThan(Long value) {
-            addCriterion("user_id >", value, "userId");
+        public Criteria andIdnoGreaterThan(String value) {
+            addCriterion("idno >", value, "idno");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("user_id >=", value, "userId");
+        public Criteria andIdnoGreaterThanOrEqualTo(String value) {
+            addCriterion("idno >=", value, "idno");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThan(Long value) {
-            addCriterion("user_id <", value, "userId");
+        public Criteria andIdnoLessThan(String value) {
+            addCriterion("idno <", value, "idno");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdLessThanOrEqualTo(Long value) {
-            addCriterion("user_id <=", value, "userId");
+        public Criteria andIdnoLessThanOrEqualTo(String value) {
+            addCriterion("idno <=", value, "idno");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdIn(List<Long> values) {
-            addCriterion("user_id in", values, "userId");
+        public Criteria andIdnoLike(String value) {
+            addCriterion("idno like", value, "idno");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotIn(List<Long> values) {
-            addCriterion("user_id not in", values, "userId");
+        public Criteria andIdnoNotLike(String value) {
+            addCriterion("idno not like", value, "idno");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdBetween(Long value1, Long value2) {
-            addCriterion("user_id between", value1, value2, "userId");
+        public Criteria andIdnoIn(List<String> values) {
+            addCriterion("idno in", values, "idno");
             return (Criteria) this;
         }
 
-        public Criteria andUserIdNotBetween(Long value1, Long value2) {
-            addCriterion("user_id not between", value1, value2, "userId");
+        public Criteria andIdnoNotIn(List<String> values) {
+            addCriterion("idno not in", values, "idno");
             return (Criteria) this;
         }
 
-        public Criteria andCarIdIsNull() {
-            addCriterion("car_id is null");
+        public Criteria andIdnoBetween(String value1, String value2) {
+            addCriterion("idno between", value1, value2, "idno");
             return (Criteria) this;
         }
 
-        public Criteria andCarIdIsNotNull() {
-            addCriterion("car_id is not null");
+        public Criteria andIdnoNotBetween(String value1, String value2) {
+            addCriterion("idno not between", value1, value2, "idno");
             return (Criteria) this;
         }
 
-        public Criteria andCarIdEqualTo(Long value) {
-            addCriterion("car_id =", value, "carId");
+        public Criteria andCarNoIsNull() {
+            addCriterion("car_no is null");
             return (Criteria) this;
         }
 
-        public Criteria andCarIdNotEqualTo(Long value) {
-            addCriterion("car_id <>", value, "carId");
+        public Criteria andCarNoIsNotNull() {
+            addCriterion("car_no is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCarIdGreaterThan(Long value) {
-            addCriterion("car_id >", value, "carId");
+        public Criteria andCarNoEqualTo(String value) {
+            addCriterion("car_no =", value, "carNo");
             return (Criteria) this;
         }
 
-        public Criteria andCarIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("car_id >=", value, "carId");
+        public Criteria andCarNoNotEqualTo(String value) {
+            addCriterion("car_no <>", value, "carNo");
             return (Criteria) this;
         }
 
-        public Criteria andCarIdLessThan(Long value) {
-            addCriterion("car_id <", value, "carId");
+        public Criteria andCarNoGreaterThan(String value) {
+            addCriterion("car_no >", value, "carNo");
             return (Criteria) this;
         }
 
-        public Criteria andCarIdLessThanOrEqualTo(Long value) {
-            addCriterion("car_id <=", value, "carId");
+        public Criteria andCarNoGreaterThanOrEqualTo(String value) {
+            addCriterion("car_no >=", value, "carNo");
             return (Criteria) this;
         }
 
-        public Criteria andCarIdIn(List<Long> values) {
-            addCriterion("car_id in", values, "carId");
+        public Criteria andCarNoLessThan(String value) {
+            addCriterion("car_no <", value, "carNo");
             return (Criteria) this;
         }
 
-        public Criteria andCarIdNotIn(List<Long> values) {
-            addCriterion("car_id not in", values, "carId");
+        public Criteria andCarNoLessThanOrEqualTo(String value) {
+            addCriterion("car_no <=", value, "carNo");
             return (Criteria) this;
         }
 
-        public Criteria andCarIdBetween(Long value1, Long value2) {
-            addCriterion("car_id between", value1, value2, "carId");
+        public Criteria andCarNoLike(String value) {
+            addCriterion("car_no like", value, "carNo");
             return (Criteria) this;
         }
 
-        public Criteria andCarIdNotBetween(Long value1, Long value2) {
-            addCriterion("car_id not between", value1, value2, "carId");
+        public Criteria andCarNoNotLike(String value) {
+            addCriterion("car_no not like", value, "carNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarNoIn(List<String> values) {
+            addCriterion("car_no in", values, "carNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarNoNotIn(List<String> values) {
+            addCriterion("car_no not in", values, "carNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarNoBetween(String value1, String value2) {
+            addCriterion("car_no between", value1, value2, "carNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andCarNoNotBetween(String value1, String value2) {
+            addCriterion("car_no not between", value1, value2, "carNo");
             return (Criteria) this;
         }
 
@@ -415,76 +435,6 @@ public class DriverSharingInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andSetoffDateIsNull() {
-            addCriterion("setoff_date is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateIsNotNull() {
-            addCriterion("setoff_date is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateEqualTo(String value) {
-            addCriterion("setoff_date =", value, "setoffDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateNotEqualTo(String value) {
-            addCriterion("setoff_date <>", value, "setoffDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateGreaterThan(String value) {
-            addCriterion("setoff_date >", value, "setoffDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateGreaterThanOrEqualTo(String value) {
-            addCriterion("setoff_date >=", value, "setoffDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateLessThan(String value) {
-            addCriterion("setoff_date <", value, "setoffDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateLessThanOrEqualTo(String value) {
-            addCriterion("setoff_date <=", value, "setoffDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateLike(String value) {
-            addCriterion("setoff_date like", value, "setoffDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateNotLike(String value) {
-            addCriterion("setoff_date not like", value, "setoffDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateIn(List<String> values) {
-            addCriterion("setoff_date in", values, "setoffDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateNotIn(List<String> values) {
-            addCriterion("setoff_date not in", values, "setoffDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateBetween(String value1, String value2) {
-            addCriterion("setoff_date between", value1, value2, "setoffDate");
-            return (Criteria) this;
-        }
-
-        public Criteria andSetoffDateNotBetween(String value1, String value2) {
-            addCriterion("setoff_date not between", value1, value2, "setoffDate");
-            return (Criteria) this;
-        }
-
         public Criteria andDepartureIdIsNull() {
             addCriterion("departure_id is null");
             return (Criteria) this;
@@ -495,52 +445,62 @@ public class DriverSharingInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andDepartureIdEqualTo(Long value) {
+        public Criteria andDepartureIdEqualTo(String value) {
             addCriterion("departure_id =", value, "departureId");
             return (Criteria) this;
         }
 
-        public Criteria andDepartureIdNotEqualTo(Long value) {
+        public Criteria andDepartureIdNotEqualTo(String value) {
             addCriterion("departure_id <>", value, "departureId");
             return (Criteria) this;
         }
 
-        public Criteria andDepartureIdGreaterThan(Long value) {
+        public Criteria andDepartureIdGreaterThan(String value) {
             addCriterion("departure_id >", value, "departureId");
             return (Criteria) this;
         }
 
-        public Criteria andDepartureIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andDepartureIdGreaterThanOrEqualTo(String value) {
             addCriterion("departure_id >=", value, "departureId");
             return (Criteria) this;
         }
 
-        public Criteria andDepartureIdLessThan(Long value) {
+        public Criteria andDepartureIdLessThan(String value) {
             addCriterion("departure_id <", value, "departureId");
             return (Criteria) this;
         }
 
-        public Criteria andDepartureIdLessThanOrEqualTo(Long value) {
+        public Criteria andDepartureIdLessThanOrEqualTo(String value) {
             addCriterion("departure_id <=", value, "departureId");
             return (Criteria) this;
         }
 
-        public Criteria andDepartureIdIn(List<Long> values) {
+        public Criteria andDepartureIdLike(String value) {
+            addCriterion("departure_id like", value, "departureId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartureIdNotLike(String value) {
+            addCriterion("departure_id not like", value, "departureId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDepartureIdIn(List<String> values) {
             addCriterion("departure_id in", values, "departureId");
             return (Criteria) this;
         }
 
-        public Criteria andDepartureIdNotIn(List<Long> values) {
+        public Criteria andDepartureIdNotIn(List<String> values) {
             addCriterion("departure_id not in", values, "departureId");
             return (Criteria) this;
         }
 
-        public Criteria andDepartureIdBetween(Long value1, Long value2) {
+        public Criteria andDepartureIdBetween(String value1, String value2) {
             addCriterion("departure_id between", value1, value2, "departureId");
             return (Criteria) this;
         }
 
-        public Criteria andDepartureIdNotBetween(Long value1, Long value2) {
+        public Criteria andDepartureIdNotBetween(String value1, String value2) {
             addCriterion("departure_id not between", value1, value2, "departureId");
             return (Criteria) this;
         }
@@ -555,52 +515,62 @@ public class DriverSharingInfoExample {
             return (Criteria) this;
         }
 
-        public Criteria andDestinationIdEqualTo(Long value) {
+        public Criteria andDestinationIdEqualTo(String value) {
             addCriterion("destination_id =", value, "destinationId");
             return (Criteria) this;
         }
 
-        public Criteria andDestinationIdNotEqualTo(Long value) {
+        public Criteria andDestinationIdNotEqualTo(String value) {
             addCriterion("destination_id <>", value, "destinationId");
             return (Criteria) this;
         }
 
-        public Criteria andDestinationIdGreaterThan(Long value) {
+        public Criteria andDestinationIdGreaterThan(String value) {
             addCriterion("destination_id >", value, "destinationId");
             return (Criteria) this;
         }
 
-        public Criteria andDestinationIdGreaterThanOrEqualTo(Long value) {
+        public Criteria andDestinationIdGreaterThanOrEqualTo(String value) {
             addCriterion("destination_id >=", value, "destinationId");
             return (Criteria) this;
         }
 
-        public Criteria andDestinationIdLessThan(Long value) {
+        public Criteria andDestinationIdLessThan(String value) {
             addCriterion("destination_id <", value, "destinationId");
             return (Criteria) this;
         }
 
-        public Criteria andDestinationIdLessThanOrEqualTo(Long value) {
+        public Criteria andDestinationIdLessThanOrEqualTo(String value) {
             addCriterion("destination_id <=", value, "destinationId");
             return (Criteria) this;
         }
 
-        public Criteria andDestinationIdIn(List<Long> values) {
+        public Criteria andDestinationIdLike(String value) {
+            addCriterion("destination_id like", value, "destinationId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDestinationIdNotLike(String value) {
+            addCriterion("destination_id not like", value, "destinationId");
+            return (Criteria) this;
+        }
+
+        public Criteria andDestinationIdIn(List<String> values) {
             addCriterion("destination_id in", values, "destinationId");
             return (Criteria) this;
         }
 
-        public Criteria andDestinationIdNotIn(List<Long> values) {
+        public Criteria andDestinationIdNotIn(List<String> values) {
             addCriterion("destination_id not in", values, "destinationId");
             return (Criteria) this;
         }
 
-        public Criteria andDestinationIdBetween(Long value1, Long value2) {
+        public Criteria andDestinationIdBetween(String value1, String value2) {
             addCriterion("destination_id between", value1, value2, "destinationId");
             return (Criteria) this;
         }
 
-        public Criteria andDestinationIdNotBetween(Long value1, Long value2) {
+        public Criteria andDestinationIdNotBetween(String value1, String value2) {
             addCriterion("destination_id not between", value1, value2, "destinationId");
             return (Criteria) this;
         }
@@ -1042,76 +1012,6 @@ public class DriverSharingInfoExample {
 
         public Criteria andCompleteFlgNotBetween(String value1, String value2) {
             addCriterion("complete_flg not between", value1, value2, "completeFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgIsNull() {
-            addCriterion("delete_flg is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgIsNotNull() {
-            addCriterion("delete_flg is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgEqualTo(String value) {
-            addCriterion("delete_flg =", value, "deleteFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgNotEqualTo(String value) {
-            addCriterion("delete_flg <>", value, "deleteFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgGreaterThan(String value) {
-            addCriterion("delete_flg >", value, "deleteFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgGreaterThanOrEqualTo(String value) {
-            addCriterion("delete_flg >=", value, "deleteFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgLessThan(String value) {
-            addCriterion("delete_flg <", value, "deleteFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgLessThanOrEqualTo(String value) {
-            addCriterion("delete_flg <=", value, "deleteFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgLike(String value) {
-            addCriterion("delete_flg like", value, "deleteFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgNotLike(String value) {
-            addCriterion("delete_flg not like", value, "deleteFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgIn(List<String> values) {
-            addCriterion("delete_flg in", values, "deleteFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgNotIn(List<String> values) {
-            addCriterion("delete_flg not in", values, "deleteFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgBetween(String value1, String value2) {
-            addCriterion("delete_flg between", value1, value2, "deleteFlg");
-            return (Criteria) this;
-        }
-
-        public Criteria andDeleteFlgNotBetween(String value1, String value2) {
-            addCriterion("delete_flg not between", value1, value2, "deleteFlg");
             return (Criteria) this;
         }
 

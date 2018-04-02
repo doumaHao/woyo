@@ -3,7 +3,7 @@ package cn.douma.woyo.db.entity;
 public class CarInfo {
     private Long id;
 
-    private Long userId;
+    private String idno;
 
     private String carNo;
 
@@ -29,12 +29,12 @@ public class CarInfo {
         this.id = id;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getIdno() {
+        return idno;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setIdno(String idno) {
+        this.idno = idno == null ? null : idno.trim();
     }
 
     public String getCarNo() {

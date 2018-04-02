@@ -3,10 +3,10 @@
 <mapper namespace="cn.douma.woyo.db.dao.UserAddressMapper" >
   <resultMap id="BaseResultMap" type="cn.douma.woyo.db.entity.UserAddress" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="user_id" property="userId" jdbcType="BIGINT" />
-    <result column="province_id" property="provinceId" jdbcType="BIGINT" />
-    <result column="city_id" property="cityId" jdbcType="BIGINT" />
-    <result column="area_id" property="areaId" jdbcType="BIGINT" />
+    <result column="idno" property="idno" jdbcType="VARCHAR" />
+    <result column="province_id" property="provinceId" jdbcType="VARCHAR" />
+    <result column="city_id" property="cityId" jdbcType="VARCHAR" />
+    <result column="area_id" property="areaId" jdbcType="VARCHAR" />
     <result column="area_info" property="areaInfo" jdbcType="VARCHAR" />
     <result column="last_use_date" property="lastUseDate" jdbcType="TIMESTAMP" />
     <result column="use_times" property="useTimes" jdbcType="INTEGER" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, province_id, city_id, area_id, area_info, last_use_date, use_times
+    id, idno, province_id, city_id, area_id, area_info, last_use_date, use_times
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.douma.woyo.db.entity.UserAddressExample" >
     select
@@ -103,18 +103,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.douma.woyo.db.entity.UserAddress" useGeneratedKeys="true" keyProperty="id" >
-    insert into user_address (user_id, province_id, city_id, 
+    insert into user_address (idno, province_id, city_id, 
       area_id, area_info, last_use_date, 
       use_times)
-    values (#{userId,jdbcType=BIGINT}, #{provinceId,jdbcType=BIGINT}, #{cityId,jdbcType=BIGINT}, 
-      #{areaId,jdbcType=BIGINT}, #{areaInfo,jdbcType=VARCHAR}, #{lastUseDate,jdbcType=TIMESTAMP}, 
+    values (#{idno,jdbcType=VARCHAR}, #{provinceId,jdbcType=VARCHAR}, #{cityId,jdbcType=VARCHAR}, 
+      #{areaId,jdbcType=VARCHAR}, #{areaInfo,jdbcType=VARCHAR}, #{lastUseDate,jdbcType=TIMESTAMP}, 
       #{useTimes,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cn.douma.woyo.db.entity.UserAddress" useGeneratedKeys="true" keyProperty="id" >
     insert into user_address
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        user_id,
+      <if test="idno != null" >
+        idno,
       </if>
       <if test="provinceId != null" >
         province_id,
@@ -136,17 +136,17 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        #{userId,jdbcType=BIGINT},
+      <if test="idno != null" >
+        #{idno,jdbcType=VARCHAR},
       </if>
       <if test="provinceId != null" >
-        #{provinceId,jdbcType=BIGINT},
+        #{provinceId,jdbcType=VARCHAR},
       </if>
       <if test="cityId != null" >
-        #{cityId,jdbcType=BIGINT},
+        #{cityId,jdbcType=VARCHAR},
       </if>
       <if test="areaId != null" >
-        #{areaId,jdbcType=BIGINT},
+        #{areaId,jdbcType=VARCHAR},
       </if>
       <if test="areaInfo != null" >
         #{areaInfo,jdbcType=VARCHAR},
@@ -171,17 +171,17 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=BIGINT},
+      <if test="record.idno != null" >
+        idno = #{record.idno,jdbcType=VARCHAR},
       </if>
       <if test="record.provinceId != null" >
-        province_id = #{record.provinceId,jdbcType=BIGINT},
+        province_id = #{record.provinceId,jdbcType=VARCHAR},
       </if>
       <if test="record.cityId != null" >
-        city_id = #{record.cityId,jdbcType=BIGINT},
+        city_id = #{record.cityId,jdbcType=VARCHAR},
       </if>
       <if test="record.areaId != null" >
-        area_id = #{record.areaId,jdbcType=BIGINT},
+        area_id = #{record.areaId,jdbcType=VARCHAR},
       </if>
       <if test="record.areaInfo != null" >
         area_info = #{record.areaInfo,jdbcType=VARCHAR},
@@ -200,10 +200,10 @@
   <update id="updateByExample" parameterType="map" >
     update user_address
     set id = #{record.id,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=BIGINT},
-      province_id = #{record.provinceId,jdbcType=BIGINT},
-      city_id = #{record.cityId,jdbcType=BIGINT},
-      area_id = #{record.areaId,jdbcType=BIGINT},
+      idno = #{record.idno,jdbcType=VARCHAR},
+      province_id = #{record.provinceId,jdbcType=VARCHAR},
+      city_id = #{record.cityId,jdbcType=VARCHAR},
+      area_id = #{record.areaId,jdbcType=VARCHAR},
       area_info = #{record.areaInfo,jdbcType=VARCHAR},
       last_use_date = #{record.lastUseDate,jdbcType=TIMESTAMP},
       use_times = #{record.useTimes,jdbcType=INTEGER}
@@ -214,17 +214,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.douma.woyo.db.entity.UserAddress" >
     update user_address
     <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=BIGINT},
+      <if test="idno != null" >
+        idno = #{idno,jdbcType=VARCHAR},
       </if>
       <if test="provinceId != null" >
-        province_id = #{provinceId,jdbcType=BIGINT},
+        province_id = #{provinceId,jdbcType=VARCHAR},
       </if>
       <if test="cityId != null" >
-        city_id = #{cityId,jdbcType=BIGINT},
+        city_id = #{cityId,jdbcType=VARCHAR},
       </if>
       <if test="areaId != null" >
-        area_id = #{areaId,jdbcType=BIGINT},
+        area_id = #{areaId,jdbcType=VARCHAR},
       </if>
       <if test="areaInfo != null" >
         area_info = #{areaInfo,jdbcType=VARCHAR},
@@ -240,10 +240,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.douma.woyo.db.entity.UserAddress" >
     update user_address
-    set user_id = #{userId,jdbcType=BIGINT},
-      province_id = #{provinceId,jdbcType=BIGINT},
-      city_id = #{cityId,jdbcType=BIGINT},
-      area_id = #{areaId,jdbcType=BIGINT},
+    set idno = #{idno,jdbcType=VARCHAR},
+      province_id = #{provinceId,jdbcType=VARCHAR},
+      city_id = #{cityId,jdbcType=VARCHAR},
+      area_id = #{areaId,jdbcType=VARCHAR},
       area_info = #{areaInfo,jdbcType=VARCHAR},
       last_use_date = #{lastUseDate,jdbcType=TIMESTAMP},
       use_times = #{useTimes,jdbcType=INTEGER}

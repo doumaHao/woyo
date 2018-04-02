@@ -3,7 +3,7 @@
 <mapper namespace="cn.douma.woyo.db.dao.CarInfoMapper" >
   <resultMap id="BaseResultMap" type="cn.douma.woyo.db.entity.CarInfo" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="idno" property="idno" jdbcType="VARCHAR" />
     <result column="car_no" property="carNo" jdbcType="VARCHAR" />
     <result column="car_no_img" property="carNoImg" jdbcType="VARCHAR" />
     <result column="car_type" property="carType" jdbcType="VARCHAR" />
@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, car_no, car_no_img, car_type, engine_no, brand_id, model_id, car_color, 
+    id, idno, car_no, car_no_img, car_type, engine_no, brand_id, model_id, car_color, 
     car_img
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.douma.woyo.db.entity.CarInfoExample" >
@@ -106,11 +106,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.douma.woyo.db.entity.CarInfo" useGeneratedKeys="true" keyProperty="id" >
-    insert into car_info (user_id, car_no, car_no_img, 
+    insert into car_info (idno, car_no, car_no_img, 
       car_type, engine_no, brand_id, 
       model_id, car_color, car_img
       )
-    values (#{userId,jdbcType=BIGINT}, #{carNo,jdbcType=VARCHAR}, #{carNoImg,jdbcType=VARCHAR}, 
+    values (#{idno,jdbcType=VARCHAR}, #{carNo,jdbcType=VARCHAR}, #{carNoImg,jdbcType=VARCHAR}, 
       #{carType,jdbcType=VARCHAR}, #{engineNo,jdbcType=VARCHAR}, #{brandId,jdbcType=BIGINT}, 
       #{modelId,jdbcType=BIGINT}, #{carColor,jdbcType=VARCHAR}, #{carImg,jdbcType=VARCHAR}
       )
@@ -118,8 +118,8 @@
   <insert id="insertSelective" parameterType="cn.douma.woyo.db.entity.CarInfo" useGeneratedKeys="true" keyProperty="id" >
     insert into car_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        user_id,
+      <if test="idno != null" >
+        idno,
       </if>
       <if test="carNo != null" >
         car_no,
@@ -147,8 +147,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        #{userId,jdbcType=BIGINT},
+      <if test="idno != null" >
+        #{idno,jdbcType=VARCHAR},
       </if>
       <if test="carNo != null" >
         #{carNo,jdbcType=VARCHAR},
@@ -188,8 +188,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.userId != null" >
-        user_id = #{record.userId,jdbcType=BIGINT},
+      <if test="record.idno != null" >
+        idno = #{record.idno,jdbcType=VARCHAR},
       </if>
       <if test="record.carNo != null" >
         car_no = #{record.carNo,jdbcType=VARCHAR},
@@ -223,7 +223,7 @@
   <update id="updateByExample" parameterType="map" >
     update car_info
     set id = #{record.id,jdbcType=BIGINT},
-      user_id = #{record.userId,jdbcType=BIGINT},
+      idno = #{record.idno,jdbcType=VARCHAR},
       car_no = #{record.carNo,jdbcType=VARCHAR},
       car_no_img = #{record.carNoImg,jdbcType=VARCHAR},
       car_type = #{record.carType,jdbcType=VARCHAR},
@@ -239,8 +239,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.douma.woyo.db.entity.CarInfo" >
     update car_info
     <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=BIGINT},
+      <if test="idno != null" >
+        idno = #{idno,jdbcType=VARCHAR},
       </if>
       <if test="carNo != null" >
         car_no = #{carNo,jdbcType=VARCHAR},
@@ -271,7 +271,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.douma.woyo.db.entity.CarInfo" >
     update car_info
-    set user_id = #{userId,jdbcType=BIGINT},
+    set idno = #{idno,jdbcType=VARCHAR},
       car_no = #{carNo,jdbcType=VARCHAR},
       car_no_img = #{carNoImg,jdbcType=VARCHAR},
       car_type = #{carType,jdbcType=VARCHAR},
