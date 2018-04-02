@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.douma.woyo.db.dao.EvaluateInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.douma.woyo.db.entity.EvaluateInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="evaluate_type" property="evaluateType" jdbcType="VARCHAR" />
+    <result column="idno" property="idno" jdbcType="VARCHAR" />
+    <result column="elavater_idno" property="elavaterIdno" jdbcType="VARCHAR" />
+    <result column="driver_order_id" property="driverOrderId" jdbcType="BIGINT" />
+    <result column="passer_order" property="passerOrder" jdbcType="BIGINT" />
+    <result column="evaluate_score" property="evaluateScore" jdbcType="INTEGER" />
+    <result column="evaluate_time" property="evaluateTime" jdbcType="TIMESTAMP" />
+    <result column="evaluate_content" property="evaluateContent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, evaluate_type, idno, elavater_idno, driver_order_id, passer_order, evaluate_score, 
+    evaluate_time, evaluate_content
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.douma.woyo.db.entity.EvaluateInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from evaluate_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from evaluate_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from evaluate_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.douma.woyo.db.entity.EvaluateInfoExample" >
+    delete from evaluate_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.douma.woyo.db.entity.EvaluateInfo" useGeneratedKeys="true" keyProperty="id" >
+    insert into evaluate_info (evaluate_type, idno, elavater_idno, 
+      driver_order_id, passer_order, evaluate_score, 
+      evaluate_time, evaluate_content)
+    values (#{evaluateType,jdbcType=VARCHAR}, #{idno,jdbcType=VARCHAR}, #{elavaterIdno,jdbcType=VARCHAR}, 
+      #{driverOrderId,jdbcType=BIGINT}, #{passerOrder,jdbcType=BIGINT}, #{evaluateScore,jdbcType=INTEGER}, 
+      #{evaluateTime,jdbcType=TIMESTAMP}, #{evaluateContent,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.douma.woyo.db.entity.EvaluateInfo" useGeneratedKeys="true" keyProperty="id" >
+    insert into evaluate_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="evaluateType != null" >
+        evaluate_type,
+      </if>
+      <if test="idno != null" >
+        idno,
+      </if>
+      <if test="elavaterIdno != null" >
+        elavater_idno,
+      </if>
+      <if test="driverOrderId != null" >
+        driver_order_id,
+      </if>
+      <if test="passerOrder != null" >
+        passer_order,
+      </if>
+      <if test="evaluateScore != null" >
+        evaluate_score,
+      </if>
+      <if test="evaluateTime != null" >
+        evaluate_time,
+      </if>
+      <if test="evaluateContent != null" >
+        evaluate_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="evaluateType != null" >
+        #{evaluateType,jdbcType=VARCHAR},
+      </if>
+      <if test="idno != null" >
+        #{idno,jdbcType=VARCHAR},
+      </if>
+      <if test="elavaterIdno != null" >
+        #{elavaterIdno,jdbcType=VARCHAR},
+      </if>
+      <if test="driverOrderId != null" >
+        #{driverOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="passerOrder != null" >
+        #{passerOrder,jdbcType=BIGINT},
+      </if>
+      <if test="evaluateScore != null" >
+        #{evaluateScore,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateTime != null" >
+        #{evaluateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateContent != null" >
+        #{evaluateContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.douma.woyo.db.entity.EvaluateInfoExample" resultType="java.lang.Integer" >
+    select count(*) from evaluate_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update evaluate_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.evaluateType != null" >
+        evaluate_type = #{record.evaluateType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idno != null" >
+        idno = #{record.idno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.elavaterIdno != null" >
+        elavater_idno = #{record.elavaterIdno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.driverOrderId != null" >
+        driver_order_id = #{record.driverOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="record.passerOrder != null" >
+        passer_order = #{record.passerOrder,jdbcType=BIGINT},
+      </if>
+      <if test="record.evaluateScore != null" >
+        evaluate_score = #{record.evaluateScore,jdbcType=INTEGER},
+      </if>
+      <if test="record.evaluateTime != null" >
+        evaluate_time = #{record.evaluateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.evaluateContent != null" >
+        evaluate_content = #{record.evaluateContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update evaluate_info
+    set id = #{record.id,jdbcType=BIGINT},
+      evaluate_type = #{record.evaluateType,jdbcType=VARCHAR},
+      idno = #{record.idno,jdbcType=VARCHAR},
+      elavater_idno = #{record.elavaterIdno,jdbcType=VARCHAR},
+      driver_order_id = #{record.driverOrderId,jdbcType=BIGINT},
+      passer_order = #{record.passerOrder,jdbcType=BIGINT},
+      evaluate_score = #{record.evaluateScore,jdbcType=INTEGER},
+      evaluate_time = #{record.evaluateTime,jdbcType=TIMESTAMP},
+      evaluate_content = #{record.evaluateContent,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.douma.woyo.db.entity.EvaluateInfo" >
+    update evaluate_info
+    <set >
+      <if test="evaluateType != null" >
+        evaluate_type = #{evaluateType,jdbcType=VARCHAR},
+      </if>
+      <if test="idno != null" >
+        idno = #{idno,jdbcType=VARCHAR},
+      </if>
+      <if test="elavaterIdno != null" >
+        elavater_idno = #{elavaterIdno,jdbcType=VARCHAR},
+      </if>
+      <if test="driverOrderId != null" >
+        driver_order_id = #{driverOrderId,jdbcType=BIGINT},
+      </if>
+      <if test="passerOrder != null" >
+        passer_order = #{passerOrder,jdbcType=BIGINT},
+      </if>
+      <if test="evaluateScore != null" >
+        evaluate_score = #{evaluateScore,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateTime != null" >
+        evaluate_time = #{evaluateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateContent != null" >
+        evaluate_content = #{evaluateContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.douma.woyo.db.entity.EvaluateInfo" >
+    update evaluate_info
+    set evaluate_type = #{evaluateType,jdbcType=VARCHAR},
+      idno = #{idno,jdbcType=VARCHAR},
+      elavater_idno = #{elavaterIdno,jdbcType=VARCHAR},
+      driver_order_id = #{driverOrderId,jdbcType=BIGINT},
+      passer_order = #{passerOrder,jdbcType=BIGINT},
+      evaluate_score = #{evaluateScore,jdbcType=INTEGER},
+      evaluate_time = #{evaluateTime,jdbcType=TIMESTAMP},
+      evaluate_content = #{evaluateContent,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

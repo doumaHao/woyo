@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.douma.woyo.db.dao.PasserShareInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.douma.woyo.db.entity.PasserShareInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="main_passer" property="mainPasser" jdbcType="VARCHAR" />
+    <result column="car_type" property="carType" jdbcType="VARCHAR" />
+    <result column="need_seat" property="needSeat" jdbcType="INTEGER" />
+    <result column="need_time" property="needTime" jdbcType="TIMESTAMP" />
+    <result column="need_status" property="needStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, main_passer, car_type, need_seat, need_time, need_status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.douma.woyo.db.entity.PasserShareInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from passer_share_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from passer_share_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from passer_share_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.douma.woyo.db.entity.PasserShareInfoExample" >
+    delete from passer_share_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.douma.woyo.db.entity.PasserShareInfo" useGeneratedKeys="true" keyProperty="id" >
+    insert into passer_share_info (main_passer, car_type, need_seat, 
+      need_time, need_status)
+    values (#{mainPasser,jdbcType=VARCHAR}, #{carType,jdbcType=VARCHAR}, #{needSeat,jdbcType=INTEGER}, 
+      #{needTime,jdbcType=TIMESTAMP}, #{needStatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.douma.woyo.db.entity.PasserShareInfo" useGeneratedKeys="true" keyProperty="id" >
+    insert into passer_share_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mainPasser != null" >
+        main_passer,
+      </if>
+      <if test="carType != null" >
+        car_type,
+      </if>
+      <if test="needSeat != null" >
+        need_seat,
+      </if>
+      <if test="needTime != null" >
+        need_time,
+      </if>
+      <if test="needStatus != null" >
+        need_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mainPasser != null" >
+        #{mainPasser,jdbcType=VARCHAR},
+      </if>
+      <if test="carType != null" >
+        #{carType,jdbcType=VARCHAR},
+      </if>
+      <if test="needSeat != null" >
+        #{needSeat,jdbcType=INTEGER},
+      </if>
+      <if test="needTime != null" >
+        #{needTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="needStatus != null" >
+        #{needStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.douma.woyo.db.entity.PasserShareInfoExample" resultType="java.lang.Integer" >
+    select count(*) from passer_share_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update passer_share_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.mainPasser != null" >
+        main_passer = #{record.mainPasser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carType != null" >
+        car_type = #{record.carType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.needSeat != null" >
+        need_seat = #{record.needSeat,jdbcType=INTEGER},
+      </if>
+      <if test="record.needTime != null" >
+        need_time = #{record.needTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.needStatus != null" >
+        need_status = #{record.needStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update passer_share_info
+    set id = #{record.id,jdbcType=BIGINT},
+      main_passer = #{record.mainPasser,jdbcType=VARCHAR},
+      car_type = #{record.carType,jdbcType=VARCHAR},
+      need_seat = #{record.needSeat,jdbcType=INTEGER},
+      need_time = #{record.needTime,jdbcType=TIMESTAMP},
+      need_status = #{record.needStatus,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.douma.woyo.db.entity.PasserShareInfo" >
+    update passer_share_info
+    <set >
+      <if test="mainPasser != null" >
+        main_passer = #{mainPasser,jdbcType=VARCHAR},
+      </if>
+      <if test="carType != null" >
+        car_type = #{carType,jdbcType=VARCHAR},
+      </if>
+      <if test="needSeat != null" >
+        need_seat = #{needSeat,jdbcType=INTEGER},
+      </if>
+      <if test="needTime != null" >
+        need_time = #{needTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="needStatus != null" >
+        need_status = #{needStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.douma.woyo.db.entity.PasserShareInfo" >
+    update passer_share_info
+    set main_passer = #{mainPasser,jdbcType=VARCHAR},
+      car_type = #{carType,jdbcType=VARCHAR},
+      need_seat = #{needSeat,jdbcType=INTEGER},
+      need_time = #{needTime,jdbcType=TIMESTAMP},
+      need_status = #{needStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
