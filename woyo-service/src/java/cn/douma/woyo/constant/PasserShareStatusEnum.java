@@ -3,17 +3,17 @@ package cn.douma.woyo.constant;
 import cn.douma.woyo.util.entity.CodeEnum;
 
 /**
- * 性别类型
+ * 乘客需求状态
  */
-public enum SexEnum implements CodeEnum<String, SexEnum, String> {
+public enum PasserShareStatusEnum implements CodeEnum<String, PasserShareStatusEnum, String> {
 
-    MAN("1", "男"),
-    WOMAN("2", "女");
+    TYPE_0("01", "未完成"),
+    TYPE_1("02", "完成");
 
     private String code;
     private String name;
 
-    private SexEnum(String code, String name) {
+    private PasserShareStatusEnum(String code, String name) {
         this.code = code;
         this.name = name;
     }
@@ -33,10 +33,10 @@ public enum SexEnum implements CodeEnum<String, SexEnum, String> {
         return this.code + "";
     }
 
-    public static SexEnum getEnumByName(String name) {
+    public static PasserShareStatusEnum getEnumByName(String name) {
         if (name == null)
             return null;
-        for (SexEnum statusType : SexEnum.values()) {
+        for (PasserShareStatusEnum statusType : PasserShareStatusEnum.values()) {
             if (statusType.getName().equals(name)) {
                 return statusType;
             }
@@ -44,10 +44,10 @@ public enum SexEnum implements CodeEnum<String, SexEnum, String> {
         return null;
     }
 
-    public static SexEnum getEnumByCode(String code) {
+    public static PasserShareStatusEnum getEnumByCode(String code) {
         if (code == null)
             return null;
-        for (SexEnum statusType : SexEnum.values()) {
+        for (PasserShareStatusEnum statusType : PasserShareStatusEnum.values()) {
             if (statusType.getCode().equals(code)) {
                 return statusType;
             }

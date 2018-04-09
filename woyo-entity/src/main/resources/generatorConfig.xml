@@ -9,6 +9,7 @@
     <context id="my" targetRuntime="MyBatis3">
 
         <commentGenerator>
+            <property name="suppressDate" value="false"/>
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
 
@@ -17,19 +18,23 @@
                         userId="root"
                         password="Woyo123"/>
 
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
         <javaModelGenerator targetPackage="cn.douma.woyo.db.entity"
-                            targetProject="D:\workspace\woyo\woyo-entity\src\main\java">
+                            targetProject="F:\workspace\woyo\woyo-entity\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="mapper"
-                         targetProject="D:\workspace\woyo\woyo-entity\src\main\resources">
+                         targetProject="F:\workspace\woyo\woyo-entity\src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <javaClientGenerator targetPackage="cn.douma.woyo.db.dao"
-                             targetProject="D:\workspace\woyo\woyo-entity\src\main\java"
+                             targetProject="F:\workspace\woyo\woyo-entity\src\main\java"
                              type="XMLMAPPER">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>

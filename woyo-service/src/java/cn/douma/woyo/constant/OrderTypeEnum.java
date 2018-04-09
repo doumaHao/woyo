@@ -1,9 +1,11 @@
 package cn.douma.woyo.constant;
 
+import cn.douma.woyo.util.entity.CodeEnum;
+
 /**
  * 订单类型
  */
-public enum OrderTypeEnum implements BaseEnum<String, OrderTypeEnum, String> {
+public enum OrderTypeEnum implements CodeEnum<String, OrderTypeEnum, String> {
 
     TYPE_10("01", "拼车乘客"),
     TYPE_11("02", "包车乘客"),

@@ -3,17 +3,20 @@ package cn.douma.woyo.constant;
 import cn.douma.woyo.util.entity.CodeEnum;
 
 /**
- * 性别类型
+ * 车辆种类
  */
-public enum SexEnum implements CodeEnum<String, SexEnum, String> {
+public enum CarTypeEnum implements CodeEnum<String, CarTypeEnum, String> {
 
-    MAN("1", "男"),
-    WOMAN("2", "女");
+    TYPE_01("01", "轿车"),
+    TYPE_02("02", "SUV"),
+    TYPE_03("03", "MPV"),
+    TYPE_04("04", "大巴"),
+    TYPE_05("05", "货车");
 
     private String code;
     private String name;
 
-    private SexEnum(String code, String name) {
+    private CarTypeEnum(String code, String name) {
         this.code = code;
         this.name = name;
     }
@@ -33,10 +36,10 @@ public enum SexEnum implements CodeEnum<String, SexEnum, String> {
         return this.code + "";
     }
 
-    public static SexEnum getEnumByName(String name) {
+    public static CarTypeEnum getEnumByName(String name) {
         if (name == null)
             return null;
-        for (SexEnum statusType : SexEnum.values()) {
+        for (CarTypeEnum statusType : CarTypeEnum.values()) {
             if (statusType.getName().equals(name)) {
                 return statusType;
             }
@@ -44,10 +47,10 @@ public enum SexEnum implements CodeEnum<String, SexEnum, String> {
         return null;
     }
 
-    public static SexEnum getEnumByCode(String code) {
+    public static CarTypeEnum getEnumByCode(String code) {
         if (code == null)
             return null;
-        for (SexEnum statusType : SexEnum.values()) {
+        for (CarTypeEnum statusType : CarTypeEnum.values()) {
             if (statusType.getCode().equals(code)) {
                 return statusType;
             }

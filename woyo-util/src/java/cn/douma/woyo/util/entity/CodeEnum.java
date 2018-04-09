@@ -1,13 +1,11 @@
-package cn.douma.woyo.constant;
+package cn.douma.woyo.util.entity;
 
 /**
- * Copyright (c) 2017. douma.cn, All Rights Reserved
- * Description:
- * User: douma haoxijun
- * Date: 2017-11-13
- * Time: 20:48
+ * 类CodeEnum.java的实现描述：所有枚举的父接口
+ *
+ * @author wangpeng 2017年3月31日10:39:21
  */
-public interface BaseEnum<C, T extends Enum<T> & BaseEnum<C, T, V>, V> {
+public interface CodeEnum<C, T extends Enum<T> & CodeEnum<C, T, V>, V> {
     /**
      * code
      *

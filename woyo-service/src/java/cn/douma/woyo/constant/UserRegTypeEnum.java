@@ -1,9 +1,11 @@
 package cn.douma.woyo.constant;
 
+import cn.douma.woyo.util.entity.CodeEnum;
+
 /**
  * 用户注册方式
  */
-public enum UserRegTypeEnum implements BaseEnum<String, UserRegTypeEnum, String> {
+public enum UserRegTypeEnum implements CodeEnum<String, UserRegTypeEnum, String> {
 
     TYPE_01("01", "微信公众号"),
     TYPE_02("02", "PC网页"),

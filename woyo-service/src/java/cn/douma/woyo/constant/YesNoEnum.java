@@ -3,17 +3,17 @@ package cn.douma.woyo.constant;
 import cn.douma.woyo.util.entity.CodeEnum;
 
 /**
- * 性别类型
+ * 是否状态
  */
-public enum SexEnum implements CodeEnum<String, SexEnum, String> {
+public enum YesNoEnum implements CodeEnum<String, YesNoEnum, String> {
 
-    MAN("1", "男"),
-    WOMAN("2", "女");
+    TYPE_1("1", "是"),
+    TYPE_0("0", "否");
 
     private String code;
     private String name;
 
-    private SexEnum(String code, String name) {
+    private YesNoEnum(String code, String name) {
         this.code = code;
         this.name = name;
     }
@@ -33,10 +33,10 @@ public enum SexEnum implements CodeEnum<String, SexEnum, String> {
         return this.code + "";
     }
 
-    public static SexEnum getEnumByName(String name) {
+    public static YesNoEnum getEnumByName(String name) {
         if (name == null)
             return null;
-        for (SexEnum statusType : SexEnum.values()) {
+        for (YesNoEnum statusType : YesNoEnum.values()) {
             if (statusType.getName().equals(name)) {
                 return statusType;
             }
@@ -44,10 +44,10 @@ public enum SexEnum implements CodeEnum<String, SexEnum, String> {
         return null;
     }
 
-    public static SexEnum getEnumByCode(String code) {
+    public static YesNoEnum getEnumByCode(String code) {
         if (code == null)
             return null;
-        for (SexEnum statusType : SexEnum.values()) {
+        for (YesNoEnum statusType : YesNoEnum.values()) {
             if (statusType.getCode().equals(code)) {
                 return statusType;
             }

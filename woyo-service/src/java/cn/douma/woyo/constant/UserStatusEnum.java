@@ -1,9 +1,11 @@
 package cn.douma.woyo.constant;
 
+import cn.douma.woyo.util.entity.CodeEnum;
+
 /**
  * 用户状态
  */
-public enum UserStatusEnum implements BaseEnum<String, UserStatusEnum, String> {
+public enum UserStatusEnum implements CodeEnum<String, UserStatusEnum, String> {
 
     TYPE_0("0", "冻结"),
     TYPE_1("1", "生效"),
