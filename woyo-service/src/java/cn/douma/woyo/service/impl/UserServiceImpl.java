@@ -34,6 +34,31 @@ public class UserServiceImpl implements UserService {
     private UserInfoMapper userInfoMapper;
 
     @Override
+    public boolean checkLoginExist(String login) {
+        if (this.findUserInfoByLogin(login) != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public UserInfo findUserInfoByLogin(String login) {
+        if (StringUtils.isEmpty(login)) {
+            throw new CheckException("登录名不能为空");
+        }
+        UserInfoExample userInfoExample = new UserInfoExample();
+        userInfoExample.createCriteria()
+                .andLoginEqualTo(login);
+        List<UserInfo> userInfoList = userInfoMapper.selectByExample(userInfoExample);
+        if (ListUtil.isNotEmpty(userInfoList)) {
+            return userInfoList.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
     public UserInfo register(String regMethod, UserInfo userInfo) {
         if ("pc".equals(regMethod)) {
             return registerByPc(userInfo);

@@ -6,6 +6,7 @@ import cn.douma.woyo.exception.CheckException;
 import cn.douma.woyo.service.CarService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Copyright (c) 2017. douma.cn, All Rights Reserved
@@ -14,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  * Date: 2018-03-28
  * Time: 17:29
  */
+@SuppressWarnings("ALL")
+@Service
 public class CarServiceImpl implements CarService {
 
     @Autowired

@@ -21,37 +21,37 @@ public class ControllerAoper {
     public void pointCut() {
 
     }
-
-    @Before(value = "pointCut()")
-    public void before(JoinPoint joinPoint) {
-        System.out.println(">>>>>Before");
-    }
-
-    @Around(value = "pointCut()")
-    public void around(ProceedingJoinPoint pjp) throws  Throwable{
-        System.out.println(">>>>>Around-from");
-        try {
-            pjp.proceed();
-        } catch (Exception e) {
-            System.out.println(">>>>>exception " + e.getMessage());
-            e.printStackTrace();
-        }
-        System.out.println(">>>>>Around-to");
-    }
-
-    @AfterReturning(value = "pointCut()")
-    public void afterReturning(JoinPoint joinPoint) {
-        System.out.println(">>>>>AfterReturning");
-    }
-
-    @AfterThrowing(value = "pointCut()")
-    public void afterThrowing(JoinPoint joinPoint) {
-        System.out.println(">>>>>AfterThrowing");
-    }
-
-    @After(value = "pointCut()")
-    public void after(JoinPoint joinPoint) {
-        System.out.println(">>>>>After");
-    }
+//
+//    @Before(value = "pointCut()")
+//    public void before(JoinPoint joinPoint) {
+//        System.out.println(">>>>>Before");
+//    }
+//
+//    @Around(value = "pointCut()")
+//    public void around(ProceedingJoinPoint pjp) throws  Throwable{
+//        System.out.println(">>>>>Around-from");
+//        try {
+//            pjp.proceed();
+//        } catch (Exception e) {
+//            System.out.println(">>>>>exception " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//        System.out.println(">>>>>Around-to");
+//    }
+//
+//    @AfterReturning(value = "pointCut()")
+//    public void afterReturning(JoinPoint joinPoint) {
+//        System.out.println(">>>>>AfterReturning");
+//    }
+//
+//    @AfterThrowing(value = "pointCut()")
+//    public void afterThrowing(JoinPoint joinPoint) {
+//        System.out.println(">>>>>AfterThrowing");
+//    }
+//
+//    @After(value = "pointCut()")
+//    public void after(JoinPoint joinPoint) {
+//        System.out.println(">>>>>After");
+//    }
 
 }

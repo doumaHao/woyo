@@ -12,6 +12,16 @@ import cn.douma.woyo.vo.LoginUserVo;
  */
 public interface UserService {
 
+    boolean checkLoginExist(String login);
+
+    /**
+     * 根据登录名获取用户信息
+     *
+     * @param login
+     * @return
+     */
+    UserInfo findUserInfoByLogin(String login);
+
     /**
      * 注册用户
      *

@@ -11,6 +11,7 @@ import cn.douma.woyo.service.OrderService;
 import cn.douma.woyo.util.*;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,6 +25,8 @@ import java.util.concurrent.ConcurrentSkipListSet;
  * Date: 2018-04-04
  * Time: 15:56
  */
+@SuppressWarnings("ALL")
+@Service
 public class OrderServiceImpl implements OrderService {
 
     @Autowired

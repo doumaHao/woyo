@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @SuppressWarnings("ALL")
 @RestController
-@RequestMapping("/car")
+@RequestMapping("/address")
 public class AddrssController {
 
     @Autowired
