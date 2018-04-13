@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletResponse;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Copyright (c) 2017. douma.cn, All Rights Reserved
@@ -24,14 +26,16 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/checkLoginExist")
-    public String findUserInfoByLogin(String login, ServletResponse response) {
+    @PostMapping("/checkLoginExist")
+    public Map findUserInfoByLogin(String login, ServletResponse response) {
         AccessControlUtil.accessControl(response);
+        Map<String, String> map = new HashMap<String, String>();
         if (userService.checkLoginExist(login)) {
-            return "0001";
+            map.put("code", "0001");
         } else {
-            return "0000";
+            map.put("code", "0000");
         }
+        return map;
     }
 
     /**

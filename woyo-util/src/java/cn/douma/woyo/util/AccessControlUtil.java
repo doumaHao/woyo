@@ -23,10 +23,10 @@ public class AccessControlUtil {
             //这里填写你允许进行跨域的主机ip
             httpServletResponse.setHeader("Access-Control-Allow-Origin", "*");
             //允许的访问方法
-            httpServletResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE, PATCH");
+            httpServletResponse.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             //Access-Control-Max-Age 用于 CORS 相关配置的缓存
             httpServletResponse.setHeader("Access-Control-Max-Age", "3600");
-            httpServletResponse.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            httpServletResponse.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Access-Token");
         }
     }
 
